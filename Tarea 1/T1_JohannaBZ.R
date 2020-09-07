@@ -8,7 +8,7 @@ colores<-c("green","white","red")
 titulo<-"Índice Nacional de Precios al Consumidor (INPC) en México\n Enero 2019 - 2020"
 labelx<-"Ciudades principales"
 labely<-"Índice (base segunda quincena julio 2018)"
-png("PrincipalesCiudades.png")
+png("PrincipalesCiudades.png", width=2000,height=1600,res=300)
 boxplot(principalesCiudades,
 main=titulo,
 xlab=labelx,
