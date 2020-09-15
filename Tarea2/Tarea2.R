@@ -4,7 +4,27 @@
 # Johanna Bolaños Zuñiga
 
 
-#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%
+if (!require("gutenbergr")) {
+    install.packages('gutenbergr')
+}
+
+if (!require("tidyverse")) {
+    install.packages('tidyverse')
+}
+
+if (!require("SnowballC")) {
+    install.packages("SnowballC")
+}
+
+if (!require("wordcloud")) {
+    install.packages("wordcloud")
+}
+
+if (!require("RColorBrewer")) {
+    install.packages("RColorBrewer")
+}
+
 
 require(gutenbergr)
 require(tidytext)
