@@ -1,30 +1,10 @@
 # Modelos Probabilistas Aplicados
 # Tarea 1
-# Tema: Uso de datos desde la Web
+# Tema: Analisis de texto
 # Johanna Bolaños Zuñiga
 
 
-#%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%
-if (!require("gutenbergr")) {
-    install.packages('gutenbergr')
-}
-
-if (!require("tidyverse")) {
-    install.packages('tidyverse')
-}
-
-if (!require("SnowballC")) {
-    install.packages("SnowballC")
-}
-
-if (!require("wordcloud")) {
-    install.packages("wordcloud")
-}
-
-if (!require("RColorBrewer")) {
-    install.packages("RColorBrewer")
-}
-
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 require(gutenbergr)
 require(tidytext)
@@ -62,12 +42,14 @@ libro <-
 letras = libro %>% unnest_tokens(chars, text, "characters")
 
 #Grafico por letras
-labelX<-("Caracteres alfanuméricos usados en el texto")
+colores<-c("green","white","red")
+labelX<-("Caracteres alfanuméricos")
 labelY<-("Frecuencia de uso")
 png("letrasEnElTexto.png", width=9000, height=4000, res=600)
 barplot(table(letras$chars), 
   xlab=labelX, 
-  ylab=labelY
+  ylab=labelY,
+  col=colores
 )
 dev.off()
 
@@ -78,12 +60,13 @@ letrasFiltradas = frameLetras [11:36,]
 
 #Grafico por letras (sin incluir numeros)
 names(letrasFiltradas)= c("Letra", "Frecuencia")
-labelX<-("Letras usadas en el texto")
+labelX<-("Letras usadas")
 png("letrasFiltradas.png",  width=6000, height=4000, res=500)
 barplot(letrasFiltradas$Frecuencia, 
   names.arg = letrasFiltradas$Letra, 
   xlab=labelX, 
-  ylab=labelY
+  ylab=labelY,
+  col=colores
 )
 dev.off()
 
@@ -93,31 +76,14 @@ png("letrasFiltradasDrec.png",  width=6000, height=4000, res=500)
 barplot(letrasFiltradasDecr$Frecuencia, 
   names.arg = letrasFiltradasDecr$Letra, 
   xlab=labelX, 
-  ylab=labelY
+  ylab=labelY,
+  col=colores
 )
 dev.off()
-
-#Histograma por letras (sin incluir numeros)
-histLabelX<-("Rangos")
-histLabelY<-("Cantidad de letras")
-limitY=c(0,20)
-png("histDeLetrasFiltradas.png",  width=2000,height=1600,res=300)
-minimo <- min(letrasFiltradas$Frecuencia)
-maximo <- max(letrasFiltradas$Frecuencia)
-anchoTotal <- maximo - minimo
-numeroDeCubetas <- 3
-anchoDeCubeta <- (anchoTotal/numeroDeCubetas)
-niveles <- seq(minimo, maximo, by=anchoDeCubeta)
-plot(cut(letrasFiltradas$Frecuencia, breaks=niveles),
-  xlab=histLabelX,
-  ylab=histLabelY, ylim=limitY
-)
-dev.off()
-
 
 # Para ver por palabras
 palabras = libro %>% unnest_tokens(word, text, "words")
-labelX<-("Palabras usadas en el texto")
+labelX<-("Palabras")
 labelY<-("Frecuencia de uso (escala logaríttmica)")
 png("palabrasEnElTexto.png", width=8000, height=5000, res=600)
 barplot(table(palabras$word),
@@ -144,7 +110,7 @@ palabrasDepurada %>%
 #Para mostrar palabras mas usadas
 framePalabras = as.data.frame(table(palabrasDepurada$word))
 names(framePalabras)= c("Palabra", "Frecuencia")
-labelY<-("Frecuencia de las palabras más usadas en el texto")
+labelY<-("Frecuencia de las palabras más usadas")
 limitX=c(0,400)
 palabrasFiltradas = framePalabras[framePalabras$Frecuencia > 120,]
 png("palabrasFiltradas.png",  width=6000, height=5000, res=600)
@@ -152,7 +118,8 @@ barplot(palabrasFiltradas$Frecuencia,
   names.arg = palabrasFiltradas$Palabra, 
   xlab=labelY, xlim=limitX,
   las=1,
-  horiz=TRUE
+  horiz=TRUE,
+  col=colores
 )
 dev.off()
 
@@ -164,17 +131,16 @@ barplot(palabrasFiltradasDecr$Frecuencia,
   names.arg = palabrasFiltradasDecr$Palabra, 
   xlab=labelY, xlim=limitX,
   las=1,
-  horiz=TRUE
+  horiz=TRUE,
+  col=colores
 )
 dev.off()
 
 #word cloud
-png("wordcloud.png", height=2000, width=1800, res=500)
+png("wordcloud.png", width=1800, height=2100, res=500)
 wordcloud(
   words = palabrasFiltradas$Palabra, 
   freq = palabrasFiltradas$Frecuencia, 
   colors = brewer.pal(8, 'Dark2')
 )
 dev.off()
-
-
