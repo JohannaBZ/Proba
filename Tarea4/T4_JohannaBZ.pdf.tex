@@ -1,0 +1,130 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\setlength{\parindent}{10mm}
+\setlength{\parskip}{0.9em}
+\def\baselinestretch{1.5}
+
+\usepackage[spanish]{babel}
+\renewcommand {\spanishtablename}{Tabla}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{enumerate} 
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage[usenames]{color}
+\usepackage{booktabs}
+
+\pagestyle{fancy}
+
+\chead{}
+\lhead{} 
+\rhead{}
+\lfoot{\it }
+\cfoot{}
+\rfoot{\thepage}
+
+\title{
+\centering
+Modelos Probabilistas Aplicados \\
+Johanna Bolaños Zúñiga \\
+Matricula: 1883900\\
+Tarea 4
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introducción}
+En el presente trabajo se realiza un análisis para simular a partir de las distribuciones uniforme y exponencial, el comportamiento de una distribución de Poisson. Para la experimentación numérica se utilizó el programa R versión 4.0.2 \cite{r}. El código en R se encuentra en el repositorio de GitHub \cite{github}.
+
+\section{Distribución de Poisson} \label{poisson}
+El proceso de Poisson, por lo general, se utiliza en escenarios donde se cuentan las ocurrencias de ciertos eventos que parecen ocurrir a un determinado ritmo, pero completamente al azar. Con base en Walpole \cite{walpole}, la distribución de Poisson se utiliza para calcular la probabilidad obtener ``eventos” o llegadas durante un periodo particular. Es una distribución de probabilidad discreta donde la variable aleatoria (v.a) de Poisson $X$ representa el número de eventos que ocurren en un intervalo unitario. La ecuación \ref{eqpoisson}, representa la probabilidad de la v.a Poisson, donde lambda $\lambda$ es la tasa media constante conocida (por unidad de tiempo) e independientemente del tiempo transcurrido desde el último evento.
+
+
+\begin{equation} \label{eqpoisson}
+p(x;\lambda)=\frac{e^{-\lambda}(\lambda)^x}{x!}, \hspace{0,5cm}x=0, 1, 2, \dots,
+\end{equation}
+
+\section{Distribución exponencial y uniforme} \label{expunif}
+
+De acuerdo a Walpole \cite{walpole}, la distribución exponencial desempeña un papel importante en la teoría de colas y en problemas de confiabilidad. Los tiempos entre llegadas en instalaciones de servicio y los tiempos de operación antes de que las partes de los componentes y sistemas eléctricos empiecen a fallar, suelen representarse mediante la distribución exponencial. El significado de la variable aleatoria se puede interpretar como el tiempo que transcurre hasta que se produce un fallo, la probabilidad de que el elemento, la pieza o el componente considerado dure cierta cantidad de tiempo. Esta distribución es un caso particular de distribución gamma con alfa $\alpha = 1$. Su parámetro se denota la letra lambda $\lambda$. En la ecuación \ref{equexpo} y \ref{equexpoacu} se muestran la función de densidad de la distribución exponencial y la acumulativa, respectivamente \cite{notasElisa}.
+
+
+\begin{equation} \label{equexpo} 
+f(x) = \lambda e^{-\lambda x} 
+\end{equation}
+
+\begin{equation} \label{equexpoacu} 
+F(x) = 1-e^{-\lambda x}
+\end{equation}
+
+En una distribución uniforme, todos los posibles eventos $x$ tienen la misma probabilidad de ocurrencia. Esta distribución se define tanto para el caso discreto como el continuo \cite{notasElisa}. La variable aleatoria solo puede tomar valores comprendidos entre dos extremos a y b, de manera que todos los intervalos de una misma longitud (dentro de (a, b)) tienen la misma probabilidad. En la ecuación \ref{equunif} y \ref{equunifacu} se muestran las funciones de densidad absoluta y acumulativa de distribución uniforme (continua), respectivamente \cite{notasElisa, walpole}.
+
+\begin{equation} \label{equunif}
+f_{(x)} = 
+\begin{cases}
+0, & x < a \\
+\frac{1}{b-a}, & a \leq x \leq b \\ 
+0, & x > b 
+\end{cases} 
+\end{equation}
+
+
+\begin{equation} \label{equunifacu}
+F_{(X)} = 
+\begin{cases}
+0, & x < a \\
+\frac{x-a}{b-a}, & a \leq x \leq b \\ 
+1, & x > b 
+\end{cases} 
+\end{equation}
+
+\section{Relación de la distribución exponencial y uniforme con el proceso de Poisson}
+
+De acuerdo al estado del arte y a los conceptos desarrolados en las secciones anteriores, la relación que se puede deducir respecto a la distribución uniforme con el proceso de Poisson es que, en un proceso de Poisson de parámetro $\lambda$ (número de eventos por unidad de tiempo), los instantes en los cuales ocurren los eventos sucesivos dividen el intervalo de tiempo $t$ en una sucesión de intervalos disjuntos. Entonces, como han ocurrido $n$ eventos o llegadas, la probabilidad de que un evento haya ocurrido en uno de esos intervalos es la misma, por lo tanto, se puede decir que exhibe una distribución uniforme. La demostración matemática de esta relación, se puede encontrar en \cite{taylor, walpole, notasclase}
+
+De igual manera, se pudo deducir que la relación respecto a la distribución exponencial con el proceso de Poisson es que, el tiempo que transcurre hasta que suceda de un evento o llegada (o el tiempo entre llegadas) siguen una distribución exponencial, por lo cual la cantidad de llegadas es lo mismo que la cantidad de valores exponencialmente distribuidos requeridos para completar un valor unitario \cite{notasElisa} La demostración matemática de esta relación, se puede encontrar en \cite{taylor, walpole}.
+
+En la literatura \cite{notasclase, knuth, devroye},se encuentran los algoritmos que ayudan simular a partir de las distribuciones uniforme y exponencial, el comportamiento de la distribución Poisson. Con base en estos algoritmos, se realizaron experimentos numéricos para determinar los parámetros en que las distribuciones se asemejan entre sí.
+  
+\subsection{Experimentación numérica}
+
+Para el caso de la distribución de Poisson a partir de una distribución exponencial, el algoritmo va sumando los valores obtenidos de una distribución exponencial y va contando cuantos valores tuvo que generar para alcanzar una $meta$, la cual fue fijada en $1$. Los valores de $\lambda$ y el número de replicas $n$ que se realiza este experimento fueron variando.
+
+De igual forma, Para el caso de la distribución de Poisson a partir de una distribución uniforme, el algoritmo va multiplicando los valores obtenidos de una distribución uniforme (entre $0$ y $1$) y va contando cuantos valores generó hasta que ese producto sea menor a $e^{-\lambda}$. Los valores de $\lambda$ y $n$ fueron variando.
+
+En la figura \ref{la2}, \ref{la20} y \ref{la70} se muestran los resultados de la experimentación cuando las réplicas son de $100$, $1,000$ y $50,000$ con un $\lambda = 2$, $\lambda = 20$ y $\lambda = 70$, respectivamente. Los valores para la distribución de Poisson fueron generados con la función \texttt{rpos(n, $\lambda$)}.
+
+De acuerdo a la forma que van tomando los histogramas de las figuras \ref{la2}, \ref{la20} y \ref{la70}. se llega a la conclusión de que a medida que aumenta la cantidad de replicas $n$ y el valor de $\lambda$ se hace más grande, se obtiene una similitud entre las distribuciones.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{Figures/la2.jpg}
+\caption{Distribución de Poisson (rojo) a partir de la distribución uniforme (azul) y exponencial (verde) con $\lambda$ = 2}
+\label{la2}
+\end{figure}
+	
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{Figures/la20.jpg}
+\caption{Distribución de Poisson (rojo) a partir de la distribución uniforme (azul) y exponencial (verde) con $\lambda$ = 20}
+\label{la20}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{Figures/la20.jpg}
+\caption{Distribución de Poisson (rojo) a partir de la distribución uniforme (azul) y exponencial (verde) con $\lambda$ = 70}
+\label{la70}
+\end{figure}
+
+\bibliography{refProbabilidad}
+\bibliographystyle{plain}
+
+\end{document}
