@@ -97,7 +97,7 @@ En la literatura \cite{notasclase, knuth, devroye},se encuentran los algoritmos 
 
 Para el caso de la distribución de Poisson a partir de una distribución exponencial, el algoritmo va sumando los valores obtenidos de una distribución exponencial y va contando cuantos valores tuvo que generar para alcanzar una $meta$, la cual fue fijada en $1$. Los valores de $\lambda$ y el número de replicas $n$ que se realiza este experimento fueron variando.
 
-De igual forma, Para el caso de la distribución de Poisson a partir de una distribución uniforme, el algoritmo va multiplicando los valores obtenidos de una distribución uniforme (entre $0$ y $1$) y va contando cuantos valores generó hasta que ese producto sea menor a $e^{-\lambda}$. Los valores de $\lambda$ y $n$ fueron variando.
+De igual forma, Para el caso de la distribución de Poisson a partir de una distribución uniforme, el algoritmo va multiplicando los valores obtenidos de una distribución uniforme (intervalo $[0,1]$) y va contando cuantos valores generó hasta que ese producto sea menor a $e^{-\lambda}$. Los valores de $\lambda$ y $n$ fueron variando.
 
 En la figura \ref{la2}, \ref{la20} y \ref{la70} se muestran los resultados de la experimentación cuando las réplicas son de $100$, $1,000$ y $50,000$ con un $\lambda = 2$, $\lambda = 20$ y $\lambda = 70$, respectivamente. Los valores para la distribución de Poisson fueron generados con la función \texttt{rpos(n, $\lambda$)}.
 
