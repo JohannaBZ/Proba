@@ -83,7 +83,7 @@ secuencia <- seq(-40,80,20)
 png("uniformeNormal1.png", width=10000,height=8000,res=900)
 par(mfcol = c(1, 2))
 hist(pseudos, col=col, main=labelM, xlab=labelX, ylab=labelY)
-qqnorm(pseudos, xlab= labelXnorm, ylab=labelY, col=col, ylim=c(-40,80))
+qqnorm(pseudos, main=NULL, xlab= labelXnorm, ylab=labelY, col=col, ylim=c(-40,80))
 qqline(pseudos)
 dev.off()
 
