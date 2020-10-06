@@ -1,0 +1,5 @@
+
+        Shapiro-Wilk normality test
+
+data:  pseudos
+W = 0.9997, p-value = 0.7955

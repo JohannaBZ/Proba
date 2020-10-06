@@ -1,0 +1,9 @@
+
+        Chi-squared test for given probabilities
+
+data:  hist.output$counts
+X-squared = 24, df = 8, p-value = 0.002292
+
+Warning message:
+In chisq.test(x = hist.output$counts, p = probs) :
+  Chi-squared approximation may be incorrect
