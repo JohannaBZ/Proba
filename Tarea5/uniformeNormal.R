@@ -77,7 +77,7 @@ dev.off()
 
 labelY  <- c("Valores")
 labelX  <- c("Valores")
-labelXnorm  <- c("Cuantiles")
+labelXnorm  <- c("Cuantiles teóricos de una distribución normal")
 col <- c("blue")
 secuencia <- seq(-40,80,20)
 png("uniformeNormal1.png", width=10000,height=8000,res=900)
