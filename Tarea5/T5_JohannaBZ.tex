@@ -84,20 +84,16 @@ Para la generación de números pseudoaleatorios uniformes (entre ($0, 1$)) a lo
 \end{itemize}
 
 Dada la importancia de contar con un conjunto suficientemente grande de números pseudoaleatorios, existen diferentes algoritmos determinísticos para obtenerlos. En este trabajo nos enfocaremos en el algoritmo generador congruencial mixto, ya que es el más utilizado. Este algoritmo genera una secuencia de números enteros por medio de la siguiente ecuación recursiva:
-
 \begin{equation} \label{recursiva}
 X_ {i+1}= (aX_{i} +c) \text{ mod } m \hspace{0,5cm}i=0, 1, 2, \dots, N
 \end{equation}
-
-\noindent donde $a$ (constante aditiva), $c$ (constante multiplicativa) y $m$ (módulo o longitud del ciclo) son enteros positivos, $X$ es la secuencia de valores pseudoaleatorios y $X_ {0}$ es la semilla. Como se mencionó anteriormente, los números que se generan son enteros, por lo cual, de acuerdo a García \cite{promodel}, para obtener números pseudoaleatorios uniformes se requiere de la ecuación \ref{equuniforme}.
-
+\noindent donde $a$ (constante aditiva), $c$ (constante multiplicativa) y $m$ (módulo o longitud del ciclo) son enteros positivos, $X$ es la secuencia de valores pseudoaleatorios y $X_ {0}$ es la semilla. Como se mencionó anteriormente, los números que se generan son enteros, por lo cual, de acuerdo a García \cite{promodel}, para obtener números pseudoaleatorios uniformes se requiere de la ecuación \ref{equuniforme}
 \begin{equation} \label{equuniforme}
-r_ {i}=\frac{X_{i}}{m-1}
+r_ {i}=\frac{X_{i}}{m-1}.
 \end{equation}
+A modo de ejemplo, se consideró generar $n=8$ números pseudoaleatorios con los siguientes parámetros: $X_{0}=100$, $a = 6$, $c = 22$ y $m = 30$. La secuencia de los números pseudoaleatorios uniformes $r_{i}$ se muestran en la tabla \ref{ejemplo1}. Para determinar si los datos obtenidos del generador siguen una distribución uniforme, se utilizó la función \texttt{uniform.test}. Después de aplicar la prueba, se obtuvo que $p$-value $= 0.945$ es mayor que $0.05$ lo que significa que los datos obtenidos al parcer siguen una distribución uniforme. 
 
-A modo de ejemplo, se consideró generar $n=8$ números pseudoaleatorios con los siguientes parámetros: $X_{0}=100$, $a = 6$, $c = 22$ y $m = 30$. La secuencia de los números pseudoaleatorios uniformes $r_{i}$ se muestran en la tabla \ref{ejemplo1}. Para determinar si los datos obtenidos del generador siguen una distribución uniforme, se utilizó la función \texttt{uniform.test}. Después de aplicar la prueba, se obtuvo que $p-value = 0.945$ es mayor que $0.05$ lo que significa que los datos obtenidos al parcer siguen una distribución uniforme. 
-
-De la anterior experimentación se pueden realizar las siguientes inferencias: en el cuadro \ref{ejemplo1}, podemos observar que el número generado en $X_{3}$ y en $X_{8}$ son los mismos y que al aplicar la prueba de uniformidad nos arrojó una advertencia, lo cual podría indicar que, de acuerdo a García \cite{promodel}, si continuamos generando más números con los parámetros dados, estos se repetirían. Para comprobar lo anterior, se realizó otra experimentación donde se generaron $30$ números pseudoaleatorios con los mismos parámetros iniciales, y al aplicar la prueba de uniformidad con el comando \texttt{uniform.test}, el $p-value = 0.002292$ fue menor que $0.05$, lo que significa que los datos obtenidos al parecer no siguen una distribución uniforme.
+De la anterior experimentación se pueden realizar las siguientes inferencias: en el cuadro \ref{ejemplo1}, podemos observar que el número generado en $X_{3}$ y en $X_{8}$ son los mismos y que al aplicar la prueba de uniformidad nos arrojó una advertencia, lo cual podría indicar que, de acuerdo a García \cite{promodel}, si continuamos generando más números con los parámetros dados, estos se repetirían. Para comprobar lo anterior, se realizó otra experimentación donde se generaron $30$ números pseudoaleatorios con los mismos parámetros iniciales, y al aplicar la prueba de uniformidad con el comando \texttt{uniform.test}, el $p$-value $= 0.002292$ fue menor que $0.05$, lo que significa que los datos obtenidos al parecer no siguen una distribución uniforme.
 
 
 \begin{table}
@@ -132,29 +128,25 @@ De acuerdo a Hiller \cite{hiller}, García \cite{promodel} y Coss \cite{coss}, p
 \end{itemize}
 
 De acuerdo a lo anterior, se realizaron 2 experimentos, uno donde se omite uno de las condiciones y otro donde se cumplen. En ambos casos se consideró generar $n=2000$ números pseudoaleatorios, para el primer caso, se omite la condición del parámetro $a$ y se contemplaron los siguientes parámetros: $X_{0}=55$, $a = 8,000$, $c = 2,651$ y $m = 2,048$ y, para el segundo caso, los parámetros son: $X_{0}=70$, $a = 8,001$, $c = 2,651$ y $m = 2,048$. En la figura \ref{pseudouniforme}, se muestra el comparativo de los histogramas de la experimentación realizada.
-
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Figures/comparativounif.png}
 \caption{Comparativo de histogramas con el generador omitiendo una condición (azul), cumpliendo todas las condiciones (rojo) y el obtenido por la función \texttt{runif} (verde)}
 \label{pseudouniforme}
 \end{figure}
-
-Como podemos observar en figura \ref{pseudouniforme}, al omitir una de las condiciones en el valor de los parámetros, los números generados no siguen una distribución uniforme, sin embargo, cuando sí se cumplen se puede apreciar que los números generados tienden a seguir esta distribución, por lo tanto, de no cumplirse alguna de las condiciones, el generador no será eficiente. Mediante la prueba \texttt{uniform.test}, también se puedo apreciar que los datos del caso donde se omiten una condición, calculó un $p-value = 2.2e^{-16}$  y donde se cumplen todas las condiciones el $p-value = 1$.
+Como podemos observar en figura \ref{pseudouniforme}, al omitir una de las condiciones en el valor de los parámetros, los números generados no siguen una distribución uniforme, sin embargo, cuando sí se cumplen se puede apreciar que los números generados tienden a seguir esta distribución, por lo tanto, de no cumplirse alguna de las condiciones, el generador no será eficiente. Mediante la prueba \texttt{uniform.test}, también se puedo apreciar que los datos del caso donde se omiten una condición, calculó un $p$-value = $2.2 \times 10^{-16}$ y donde se cumplen todas las condiciones el $p$-value = $1$.
 
 Otro de los métodos para generar números pseudoaleatorios uniformes es el algoritmo congruencial cuadrático, el cual tiene la siguiente ecuación recursiva:
-
 \begin{equation}
-X_ {i+1}= (aX_{i}^{2} + bX_{i} + c) \text{ mod } m \hspace{0,5cm}i=0, 1, 2, \dots, N
+X_ {i+1}= (aX_{i}^{2} + bX_{i} + c) \text{ mod } m \hspace{0,5cm}i=0, 1, 2, \dots, N.
 \end{equation}
-
 De igual forma, se pueden generar los números uniformes mediante la ecuación \ref{equuniforme}. García \cite{promodel} menciona también que para que el generador de números pseudoaleatorios uniforme sea eficiente, se requiere que los parámetros $a$, $b$, $c$ y $m$ cumplan con las siguientes condiciones:
 
 \begin{itemize}
     \item $m = 2^g$, donde $g$ es entero.
     \item $a$ debe ser un número par.
     \item $c$ debe ser un número impar
-    \item $(b-1) \text{ mod } 4 = 1$ 
+    \item $(b-1) \text{ mod } 4 = 1$.
 \end{itemize}
 
 \section{Generación de números pseudoaleatorios distribuidos normalmente}
@@ -179,17 +171,17 @@ $z_{1}$ son variables aleatorias independentes con una distribución normal con 
 
 \end{algorithm}
 
-A manera de ejemplo, se realizó una experimentación donde se generaron $n=4,500$ replicas con los números pseudoaleatorios distribuidos normalmente, con media ($\mu = 20$), desviación estándar ($\sigma = 15$). Los resultados obtenidos, se muestran en la figura \ref{pseudonormal}, en la cual podemos observar que los histogramas de distribuciones parecen semejantes, lo que podría significar que el algoritmo utilizado al parecer está generando números pseudoaleatorios distribuidos normalmente.
+A manera de ejemplo, se realizó una experimentación donde se generaron $n=4,500$ réplicas con los números pseudoaleatorios distribuidos normalmente, con media ($\mu = 20$), desviación estándar ($\sigma = 15$). Los resultados obtenidos, se muestran en la figura \ref{pseudonormal}, en la cual podemos observar que los histogramas de distribuciones parecen semejantes, lo que podría significar que el algoritmo utilizado al parecer está generando números pseudoaleatorios distribuidos normalmente.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Figures/comparativonormal.png}
-\caption{Comparativo de histogramas utilizando el generador propuesto (azul) y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
+\caption{Comparativo de histogramas utilizando el generador propuesto (azul) y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ réplicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
 \label{pseudonormal}
 \end{figure}
 
 
-Para determinar si las $n$ replicas de los números generados siguen una distribución normal, se aplica la prueba de normalidad \textit{Shapiro\textendash Wilks} con la función \texttt{shapiro.test}. Esta prueba plantea la hipótesis nula que una muestra proviene de una distribución normal y una hipótesis alternativa que sostiene que la distribución no es normal. Para aceptar la hipótesis nula el $p-value$ debe ser mayor a $0.05$. De acuerdo al resultado obtenido de la prueba,  $p-value = 0.7955$, lo que significa que se aprueba la hipótesis nula y, por lo tanto, los datos obtenidos siguen una distribución normal.
+Para determinar si las $n$ réplicas de los números generados siguen una distribución normal, se aplica la prueba de normalidad \textit{Shapiro\textendash Wilks} con la función \texttt{shapiro.test}. Esta prueba plantea la hipótesis nula que una muestra proviene de una distribución normal y una hipótesis alternativa que sostiene que la distribución no es normal. Para aceptar la hipótesis nula el $p$-value debe ser mayor a $0.05$. De acuerdo al resultado obtenido de la prueba,  $p$-value $= 0.7955$, lo que significa que se aprueba la hipótesis nula y, por lo tanto, los datos obtenidos siguen una distribución normal.
 
 \VerbatimInput{Resulpruebas/shapiro.txt}
 
@@ -202,7 +194,7 @@ Para el escenario 1, se consideran dos casos, dependencia directa ($U_{2} = 2U_{
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Figures/comparativosU.png}
-\caption{Comparación histogramas cuando en el generador las variables $U_{1}$ y $U_{2}$ tiene dependencia directa (morado), $U_{1}$ y $U_{2}$ tiene dependencia indirecta (naranja) y y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
+\caption{Comparación histogramas cuando en el generador las variables $U_{1}$ y $U_{2}$ tiene dependencia directa (morado), $U_{1}$ y $U_{2}$ tiene dependencia indirecta (naranja) y y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ réplicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
 \label{escenario1}
 \end{figure}
 
@@ -212,20 +204,20 @@ Para hacer el análisis de los resultados de los escenarios 2 y 3, se utilizó u
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Figures/comparativosZ.png}
-\caption{Comparación de diagramas de caja y bigotes del generador considerando sólo $z_{0}$ (rojo), con sólo $z_{1}$ (amarillo), ambas variables $z_{0}$ y $z_{1}$ (azul) y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
+\caption{Comparación de diagramas de caja y bigotes del generador considerando sólo $z_{0}$ (rojo), con sólo $z_{1}$ (amarillo), ambas variables $z_{0}$ y $z_{1}$ (azul) y los resultados obtenidos por la función \texttt{rnorm} (verde), con $n= 4,500$ réplicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
 \label{escenario2-3}
 \end{figure}
 
-\subsection{Uso del generador de números pseudoaleatorios con distribución uniforme en el generador de números pseudoaleatorios con distribución normal}
+\subsection{Uso entre generadores propuestos}
 
 A manera de práctica, se utiliza el generador de números pseudoaleatorios con distribución normal, modificando el algoritmo \ref{boxmuller}, de tal manera que las variables $U_{1}$ y $U_{2}$ se obtienen a partir del generador de números pseudoaleatorios con distribución uniforme tratado en la sección \ref{distuniforme}. 
 
-Para llevar a cabo la experimentación, se consideran los siguientes parámetros para el generador de distribución uniforme: $X_{0}=21$, $a = 8,001$, $c = 2,651$ y $m = 2,048$ con $n=2$ réplicas y para el generador para los de distribución normal, $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$). Los resultados obtenidos de esta experimentación son mostrados en la figura \ref{uniformeNormal}. En la que podemos observar que los datos obtenidos con el generador se ajustan a una la distribución normal y, por lo tanto, el generador de números pseudoaleatorios con distribución uniforme, está arrojando valores con está distribución.
+Para llevar a cabo la experimentación, se consideran los siguientes parámetros para el generador de distribución uniforme: $X_{0}=21$, $a = 8,001$, $c = 2,651$ y $m = 2,048$ con $n=2$ réplicas y para el generador de distribución normal, $n= 4,500$ réplicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$). Los resultados obtenidos de esta experimentación son mostrados en la figura \ref{uniformeNormal}. En la que podemos observar que los datos obtenidos con el generador se ajustan a una la distribución normal y, por lo tanto, el generador de números pseudoaleatorios con distribución uniforme, está arrojando valores con está distribución.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{Figures/uniformeNormal1.png}
-\caption{Correlación entre los valores obtenidos del generador (transformación de Box-Muller) y la distribución normal, con $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
+\caption{Correlación entre los valores obtenidos del generador (transformación de Box-Muller) y la distribución normal, con $n= 4,500$ réplicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
 \label{uniformeNormal}
 \end{figure}
 
