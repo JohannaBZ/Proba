@@ -207,7 +207,7 @@ Para el escenario 1, se consideran dos casos, dependencia directa ($U_{2} = 2U_{
 \end{figure}
 
 
-Para hacer el análisis de los resultados de los escenarios 2 y 3, se utilizó un diagrama de cajas y bigotes incluyendo también los resultados del generador considerando las variables $z_{0}$ y $z_{1}$ y la distribución normal con la función \texttt{rnorm}. Los resultados de esta experimentación se muestran en la figura \ref{escenario2-3}. En la cual podemos observar que al ejecutar el generador sólo con la variables $z_{0}$, o con la variables $z_{1}$ o con ambas, no hay cambios significativos en los resultados obtenidos, por lo tanto, al parecer hay inpendencia entre estas variables, es decir, el generador puede ejecutarse solo con el cálculo de una de estas variables.
+Para hacer el análisis de los resultados de los escenarios 2 y 3, se utilizó un diagrama de cajas y bigotes incluyendo también los resultados del generador considerando las variables $z_{0}$ y $z_{1}$ y la distribución normal con la función \texttt{rnorm}. Los resultados de esta experimentación se muestran en la figura \ref{escenario2-3}. En la cual podemos observar que al ejecutar el generador sólo con la variables $z_{0}$, o con la variables $z_{1}$ o con ambas, no hay cambios significativos en los resultados obtenidos, por lo tanto, al parecer hay independencia entre estas variables, es decir, el generador puede ejecutarse solo con el cálculo de una de estas.
 
 \begin{figure}
 \centering
@@ -224,7 +224,7 @@ Para llevar a cabo la experimentación, se consideran los siguientes parámetros
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{Figures/uniformeNormal.png}
+\includegraphics[width=\linewidth]{Figures/uniformeNormal1.png}
 \caption{Correlación entre los valores obtenidos del generador (transformación de Box-Muller) y la distribución normal, con $n= 4,500$ replicas, media ($\mu = 20$) y desviación estándar ($\sigma = 15$)}
 \label{uniformeNormal}
 \end{figure}
