@@ -147,13 +147,13 @@ Esta prueba se utiliza para comprobar si 2 muestras siguen la misma distribució
     
 \subsection{Prueba $F$ de Fisher}
     
-Es una prueba paramétrica que se utiliza para verificar si dos muestras tienen la misma varianza. Se plantea como como $H_{0}$ que los datos de los meses de agosto 2018 con julio 2019 tienen la misma varianza y, como $H_{1}$ que estas muestras sus varianzas son diferentes. Se utilizó la función \texttt{var.test} para realizar esta prueba. De acuerdo al resultado obtenido por la función, el valor $p$ = 2.2$\times $10^{-16}$, por lo tanto, se rechaza la $H_{0}$, lo cual indica que los datos de los meses de agosto 2018 y julio 2019 no tienen la misma varianza. 
+Es una prueba paramétrica que se utiliza para verificar si dos muestras tienen la misma varianza. Se plantea como como $H_{0}$ que los datos de los meses de agosto 2018 con julio 2019 tienen la misma varianza y, como $H_{1}$ que estas muestras sus varianzas son diferentes. Se utilizó la función \texttt{var.test} para realizar esta prueba. De acuerdo al resultado obtenido por la función, el valor $p$ = 2.2$\times 10^{-16}$, por lo tanto, se rechaza la $H_{0}$, lo cual indica que los datos de los meses de agosto 2018 y julio 2019 no tienen la misma varianza. 
     
 \VerbatimInput{Resulpruebas/fisher.txt}
     
 Esta prueba también se puede usar para saber si la varianza de una muestra sigue un determinado valor, solo hay que adicionar ciertos parámetros en la función \texttt{var.test} para realizarla. Se pueden ver ejemplos en el repositorio de Freddy \cite{freddy}.
     
-\subsection{Prueba $X^2$}
+\subsection{Prueba Chi$^2$}
 Esta prueba se puede utilizar para probar si dos variables categóricas son dependientes, mediante una tabla de contingencia. Para realizar esta tabla, se consideraron dos factores, ciudades y meses del año. Para las ciudades, se contemplan Monterrey y Guadalajara y se analizaran los índices de los 12 meses del año 2016. En el cuadro \ref{tablacontingencia}, se encuentra la información de los datoa a analizar.
     
 \begin{table}
@@ -180,7 +180,7 @@ Esta prueba se puede utilizar para probar si dos variables categóricas son depe
 
 Se plantea como $H_{0}$ que valores del índice alcanzado de cada ciudad es independiente del mes del año en que se encuentren y, como $H_{0}$ las variables son dependientes. Se utilizó la función \texttt{chisq.test} para realizar esta prueba. Para aceptar la $H_{0}$ se deben de cumplir dos consideraciones, que el valor $p >$ 0.05 y que el $X-Square$ sea menor al valor crítico. Para calcular este valor se utiliza la función \texttt{qchisq(0.95, n-1)}, donde 0.95 es el nivel de confianza y n-1 son los grados de libertad. Estos grados de libertad dependen de la cantidad de filas y columnas que tenga la tabla de contingencia y se calculan con la siguiente formula: ($filas-1$)$*$($columnas-1$). Para este caso, el valor crítico = 19.67514.
 
-Al aplicar la función se obtiene que el valor $p =$ 0.2329 y un $X-Square >$ valor crítico, por lo tanto, al no cumplirse la consideración con base al $X-Square$, hay suficiente evidencia estadística para rechazar $H_{0}$, lo cual indica que las variables son dependientes, es decir, el índice de las ciudades de Monterrey y Guadalajara dependen del mes del año.
+Al aplicar la función se obtiene que el valor $p =$ 1 y un $X-Square <$ valor crítico, por lo tanto, no hay suficiente evidencia estadística para rechazar $H_{0}$, lo cual indica que las variables son independientes, es decir, el índice alcanzado de las ciudades de Monterrey y Guadalajara no dependen del mes del año.
 
 \VerbatimInput{Resulpruebas/chi.txt}
    

@@ -6,7 +6,7 @@
 # %%%%%%%%%%%%%%%%%%%% base de datos %%%%%%%%%%%%%%%%%%
 
 totalCiudades <-read.table("INPC.txt", header = TRUE, encoding="UTF-8")
-
+#View(totalCiudades)
 #%%%%% Conjunto 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 agosto2018 <- as.numeric(totalCiudades[44:44,])
@@ -79,11 +79,14 @@ dev.off()
 
 #%%%%%%%%%%%%%%%% chi-cuadrado %%%%%%%%%%%%
 
-monterrey <- totalCiudades[13:24,33:33]
-guadalajara <- totalCiudades[13:24,21:21]
-chisq.test(monterrey, guadalajara, correct=TRUE)
-summary(table(monterrey, guadalajara))
+tablacontingencia <- data.frame(totalCiudades[13:24,33:33], totalCiudades[13:24,21:21])
+names(tablacontingencia) <- c("Monterrey", "Guadalajara")
+rownames(tablacontingencia) <- c("Ene2016", "Feb2016", "Mar2016", "Abr2016", "May2016", "Jun2016", "Jul2016", "Ago2016", "Sep2016", "Oct2016", "Nov2016", "Dic2016")
+#View(tablacontingencia)
+
+chisq.test(tablacontingencia, correct=TRUE)
 qchisq (0.95, 11)
+
 
 #%%%%%%%%%%%%% plots %%%%%%%%%%%%%%%%%%%%%%%%
 
