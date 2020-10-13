@@ -199,28 +199,25 @@ Es una prueba paramétrica que se utiliza para probar si hay una relación linea
 
 \section{Preguntas}
 
-A continuación, se presentan algunas de las preguntas más frecuentes para determinar que prueba estadística escoger y la interpretación de sus resultados.
+\noindent \textbf{Relación entre contraste de hipótesis y pruebas estadísticas}
+    
+Las pruebas estadísticas son técnicas que utilizan muestras representativas de una población para evaluar la evidencia que proporcionan los datos y la hipótesis es la suposición de algún fenómeno o problema la cual son comprobadas a través de las pruebas estadísticas. En estas pruebas existen dos tipos de hipótesis, nula ($H_{0}$) y la alternativa ($H_{1}$ o $H_{A}$).
 
-\begin{itemize}
-    \item Relación entre contraste de hipótesis y pruebas estadísticas
-    
-    Las pruebas estadísticas son técnicas que utilizan muestras representativas de una población para evaluar la evidencia que proporcionan los datos y la hipótesis es la suposición de algún fenómeno o problema la cual son comprobadas a través de las pruebas estadísticas. En estas pruebas existen dos tipos de hipótesis, nula ($H_{0}$) y la alternativa ($H_{1}$ o $H_{A}$).
+\noindent \textbf{¿Qué indicaría rechazar la hipótesis nula?}
 
-    \item ¿Qué indicaría rechazar la hipótesis nula?
+Normalmente, la hipótesis nula ($H_{0}$) establece la igualdad entre las medias, varianzas, entre otros, por lo tanto, si se rechaza indicaría que existe alguna diferencia entre ellas.
     
-    Normalmente, la hipótesis nula ($H_{0}$) establece la igualdad entre las medias, varianzas, entre otros, por lo tanto, si se rechaza indicaría que existe alguna diferencia entre ellas.
+\noindent \textbf{¿Cómo se interpreta la salida de una prueba estadística?}
     
-    \item ¿Cómo se interpreta la salida de una prueba estadística?
-    
-    Al diseñar un estudio, se especifica un nivel de significación alfa ($\alpha$) que debería estar entre $0$ y $1$, lo que indica que por encima este valor $H_{0}$ no debería ser rechazada. La prueba estadística produce un número denominado valor $p$ el cual también se encuentra entre $0$ y $1$. En términos más prácticos, el valor $p$ se compara con $\alpha$, si $p < \alpha$, rechazamos $H_{0}$ y aceptamos Ha con un riesgo proporcional al valor $p$ de ser errónea. Por otro lado, si $p > \alpha$, no rechazamos $H_{0}$, pero esto no implica necesariamente que debamos aceptarla, solo que nuestro experimento y nuestra prueba estadística no han sido suficientemente ``fuertes" para producir un valor $p$ inferior a $\alpha$.
+Al diseñar un estudio, se especifica un nivel de significación alfa ($\alpha$) que debería estar entre $0$ y $1$, lo que indica que por encima este valor $H_{0}$ no debería ser rechazada. La prueba estadística produce un número denominado valor $p$ el cual también se encuentra entre $0$ y $1$. En términos más prácticos, el valor $p$ se compara con $\alpha$, si $p < \alpha$, rechazamos $H_{0}$ y aceptamos Ha con un riesgo proporcional al valor $p$ de ser errónea. Por otro lado, si $p > \alpha$, no rechazamos $H_{0}$, pero esto no implica necesariamente que debamos aceptarla, solo que nuestro experimento y nuestra prueba estadística no han sido suficientemente ``fuertes" para producir un valor $p$ inferior a $\alpha$.
 
-    \item ¿Cómo seleccionar el alpha?
+\noindent \textbf{¿Cómo seleccionar el alpha?}
     
-    El nivel de significancia se denota con la letra griega alfa $\alpha$. No existe una evidencia científica de cuál sea el valor más adecuado. Sin embargo, el valor más empleado es 0.05, se suelen tomar valores pequeños (menores al $10\%$), esto debido a que representa el riesgo de rechazar la hipótesis nula ($H_{0}$) cuando es verdadera. En ese sentido con una buena elección de $\alpha$ se delimita muy bien cuando rechazar la $H_{0}$ lo que aumenta la probabilidad de tomar la decisión correcta.
+El nivel de significancia se denota con la letra griega alfa $\alpha$. No existe una evidencia científica de cuál sea el valor más adecuado. Sin embargo, el valor más empleado es 0.05, se suelen tomar valores pequeños (menores al $10\%$), esto debido a que representa el riesgo de rechazar la hipótesis nula ($H_{0}$) cuando es verdadera. En ese sentido con una buena elección de $\alpha$ se delimita muy bien cuando rechazar la $H_{0}$ lo que aumenta la probabilidad de tomar la decisión correcta.
     
-    \item ¿Cuáles son los errores frecuentes de interpretación del valor $p$?
+\noindent \textbf{¿Cuáles son los errores frecuentes de interpretación del valor $p$?}
     
-    La interpretación del valor $p$ conduce al rechazo o la aceptación de la hipótesis nula, específicamente el valor $p$ corresponde al menor valor de alfa ($\alpha$) que ocasiona el rechazo de la hipótesis nula ($H_{0}$). Los errores más frecuentes que se presentan son los errores tipo I y tipo II. El error tipo I se presenta cuando se rechaza la $H_{0}$ y es verdadera, mientras que el error tipo II consiste en no rechazar la $H_{0}$ cuando es falsa. De acuerdo a Walpole \cite{walpole}, en el cuadro \ref{errores} se resumen estos errores. La probabilidad de cometer esos errores se reduce aumentando el tamaño de la muestra.
+La interpretación del valor $p$ conduce al rechazo o la aceptación de la hipótesis nula, específicamente el valor $p$ corresponde al menor valor de alfa ($\alpha$) que ocasiona el rechazo de la hipótesis nula ($H_{0}$). Los errores más frecuentes que se presentan son los errores tipo I y tipo II. El error tipo I se presenta cuando se rechaza la $H_{0}$ y es verdadera, mientras que el error tipo II consiste en no rechazar la $H_{0}$ cuando es falsa. De acuerdo a Walpole \cite{walpole}, en el cuadro \ref{errores} se resumen estos errores. La probabilidad de cometer esos errores se reduce aumentando el tamaño de la muestra.
     
     \begin{table}
     \centering
@@ -234,65 +231,63 @@ A continuación, se presentan algunas de las preguntas más frecuentes para dete
     \label{errores}
     \end{table}
 
-    \item ¿Qué es la potencia estadística y para qué sirve?
+\noindent \textbf{¿Qué es la potencia estadística y para qué sirve?}
     
-    La potencia estadística o el poder del estadístico, corresponde a la capacidad que tiene una prueba de llevar al rechazo de la hipótesis nula ($H_{0}$). La potencia estadística aumenta con el valor de alfa $\alpha$, con la precisión de las medidas y el número de repeticiones, también depende del tipo de prueba estadística que se esté realizando. Este parámetro puede ser calculado antes o después de realizar el experimento.
+La potencia estadística o el poder del estadístico, corresponde a la capacidad que tiene una prueba de llevar al rechazo de la hipótesis nula ($H_{0}$). La potencia estadística aumenta con el valor de alfa $\alpha$, con la precisión de las medidas y el número de repeticiones, también depende del tipo de prueba estadística que se esté realizando. Este parámetro puede ser calculado antes o después de realizar el experimento.
     
-    \item Ejemplos de pruebas estadísticas paramétricas y no paramétricas.
+\noindent \textbf{Ejemplos de pruebas estadísticas paramétricas y no paramétricas}
     
-    Las pruebas paramétricas se emplean para datos numéricos, suelen estar basadas en las propiedades de la distribución normal para la variable dependiente. Es decir, los datos son mediciones repetidas de la misma variable, muestreado de la población realizado al azar y cuando la muestra es grande. Como ejemplo de pruebas paramétricas se tienen:
+Las pruebas paramétricas se emplean para datos numéricos, suelen estar basadas en las propiedades de la distribución normal para la variable dependiente. Es decir, los datos son mediciones repetidas de la misma variable, muestreado de la población realizado al azar y cuando la muestra es grande. Como ejemplo de pruebas paramétricas se tienen: 
     
-    \begin{itemize}
-        \item La “t” de student.
-        \item El coeficiente de correlación de Pearson.
-        \item La regresión lineal.
-        \item Análisis de varianza unidireccional (ANOVA \textit{Oneway}).
-        \item Análisis de varianza factorial (ANOVA).
-        \item Análisis de covarianza (ANCOVA).
-        \item Estadígrafos descriptivos como la desviación estándar, la moda, la mediana y la media.
-    \end{itemize}
-    Por otra parte, las pruebas no paramétricas se aplican con variables nominales y ordinales, no asume un tipo específico de distribución. Ejemplos de este tipo de pruebas son:
-    
-    \begin{itemize}
-        \item La $X^2$
-        \item Coeficientes de correlación e independencia para tabulaciones cruzadas.
-        \item Coeficientes de correlación por rangos ordenados Spearman y Kendll.
-    \end{itemize}
-    
-    \item Resume LA GUIA para encontrar la prueba estadística que buscas. 
-    
-    \begin{itemize}
-        \item Escribir claramente el objetivo de análisis.
-        \item Tipo de variables.
-        \item Si son muestras independientes o no.
-        \item Identificar si se pueden aplicar técnicas paramétricas.
-        \item Seleccionar la prueba adecuada.
-        \item Realizar la prueba de hipótesis.
-        \item Interpretar y graficar los resultados.
-    \end{itemize}
-    
-    En la figura \ref{guia}, se describe el proceso de selección de una prueba estadística basado en el estudio realizado por Florez-Ruiz \cite{guia}.
-    
-    \begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{Figures/resumenguia.png}
-    \caption{Proceso de selección de una prueba estadística}
-    \label{guia}
-    \end{figure}
- 
-    \item ¿Cuáles son los supuestos para aplicar técnicas paramétricas?
-    
-    Las pruebas paramétricas están basadas en la distribución normal para la variable dependiente, y los requisitos para aplicarlas son las siguientes:
-    
-    \begin{itemize}
-        \item Las observaciones deben ser independientes entre sí.
-        \item Las poblaciones deben hacerse en poblaciones distribuidas normalmente.
-        \item Estas poblaciones deben tener la misma varianza.
-        \item Las variables deben haberse medido por lo menos en una escala de intervalo de manera que sea posible utilizar las operaciones aritméticas.
-   \end{itemize}
+\begin{itemize}
+    \item La “t” de student.
+    \item El coeficiente de correlación de Pearson.
+    \item La regresión lineal.
+    \item Análisis de varianza unidireccional (ANOVA \textit{Oneway}).
+    \item Análisis de varianza factorial (ANOVA).
+    \item Análisis de covarianza (ANCOVA).
+    \item Estadígrafos descriptivos como la desviación estándar, la moda, la mediana y la media.
 \end{itemize}
 
-
+Por otra parte, las pruebas no paramétricas se aplican con variables nominales y ordinales, no asume un tipo específico de distribución. Ejemplos de este tipo de pruebas son:
+    
+\begin{itemize}
+\item La $X^2$
+\item Coeficientes de correlación e independencia para tabulaciones cruzadas.
+\item Coeficientes de correlación por rangos ordenados Spearman y Kendll.
+\end{itemize}
+    
+\noindent \textbf{Resume LA GUIA para encontrar la prueba estadística que buscas} 
+    
+\begin{itemize}
+    \item Escribir claramente el objetivo de análisis.
+    \item Tipo de variables.
+    \item Si son muestras independientes o no.
+    \item Identificar si se pueden aplicar técnicas paramétricas.
+    \item Seleccionar la prueba adecuada.
+    \item Realizar la prueba de hipótesis.
+    \item Interpretar y graficar los resultados.
+\end{itemize}
+    
+En la figura \ref{guia}, se describe el proceso de selección de una prueba estadística basado en el estudio realizado por Florez-Ruiz \cite{guia}.
+    
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Figures/resumenguia.png}
+\caption{Proceso de selección de una prueba estadística}
+\label{guia}
+\end{figure}
+ 
+\noindent \textbf{¿Cuáles son los supuestos para aplicar técnicas paramétricas?}
+    
+Las pruebas paramétricas están basadas en la distribución normal para la variable dependiente, y los requisitos para aplicarlas son las siguientes:
+    
+\begin{itemize}
+    \item Las observaciones deben ser independientes entre sí.
+    \item Las poblaciones deben hacerse en poblaciones distribuidas normalmente.
+    \item Estas poblaciones deben tener la misma varianza.
+    \item Las variables deben haberse medido por lo menos en una escala de intervalo de manera que sea posible utilizar las operaciones aritméticas.
+\end{itemize}
 
 \bibliography{refProbabilidad}
 \bibliographystyle{plain}
