@@ -1,0 +1,10 @@
+        Wilcoxon signed rank test with continuity correction
+
+data:  monterrey
+V = 952, p-value = 0.1779
+alternative hypothesis: true location is not equal to 98.5
+95 percent confidence interval:
+ 96.08101 99.04248
+sample estimates:
+(pseudo)median 
+      97.49006 

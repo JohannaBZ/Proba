@@ -1,0 +1,4 @@
+        Pearson's Chi-squared test
+
+data:  monterrey and guadalajara
+X-squared = 132, df = 121, p-value = 0.2329

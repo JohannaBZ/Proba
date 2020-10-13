@@ -1,0 +1,10 @@
+        Pearson's product-moment correlation
+
+data:  julio2019 and agosto2020
+t = 7.3722, df = 53, p-value = 1.136e-09
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5500801 0.8217206
+sample estimates:
+     cor 
+0.711539 

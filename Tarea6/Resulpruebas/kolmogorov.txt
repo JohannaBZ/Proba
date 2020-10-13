@@ -1,0 +1,5 @@
+        Two-sample Kolmogorov-Smirnov test
+
+data:  cdMexico and guadalajara
+D = 0.11765, p-value = 0.7384
+alternative hypothesis: two-sided

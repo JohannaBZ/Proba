@@ -1,0 +1,10 @@
+        F test to compare two variances
+
+data:  agosto2018 and julio2019
+F = 0.044063, num df = 54, denom df = 54, p-value < 2.2e-16
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.02570083 0.07554563
+sample estimates:
+ratio of variances 
+        0.04406342 

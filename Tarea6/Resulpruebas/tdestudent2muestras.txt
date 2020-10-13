@@ -1,0 +1,10 @@
+        Welch Two Sample t-test
+
+data:  agosto2018 and agosto2020
+t = -49.92, df = 57.174, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.648070 -7.058185
+sample estimates:
+mean of x mean of y 
+ 100.4723  107.8254 

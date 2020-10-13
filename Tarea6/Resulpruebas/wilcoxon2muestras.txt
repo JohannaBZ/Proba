@@ -1,0 +1,10 @@
+        Wilcoxon rank sum test with continuity correction
+
+data:  monterrey and guadalajara
+W = 2445, p-value = 0.5642
+alternative hypothesis: true location shift is not equal to 0
+95 percent confidence interval:
+ -1.406049  2.638050
+sample estimates:
+difference in location 
+             0.5841114 

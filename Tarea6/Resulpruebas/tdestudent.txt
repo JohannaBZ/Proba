@@ -1,0 +1,10 @@
+        One Sample t-test
+
+data:  agosto2018
+t = 2.9043, df = 54, p-value = 0.005324
+alternative hypothesis: true mean is not equal to 100.4
+95 percent confidence interval:
+ 100.4224 100.5222
+sample estimates:
+mean of x 
+ 100.4723 
