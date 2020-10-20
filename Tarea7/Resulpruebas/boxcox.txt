@@ -1,0 +1,17 @@
+Call:
+lm(formula = (y^lambdabox - 1)/lambdabox ~ x1, data = f2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.16687 -0.09227 -0.02531  0.07517  0.44237 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -3.074042   0.008967  -342.8   <2e-16 ***
+x1           3.609200   0.000232 15559.3   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1065 on 998 degrees of freedom
+Multiple R-squared:      1,     Adjusted R-squared:      1 
+F-statistic: 2.421e+08 on 1 and 998 DF,  p-value: < 2.2e-16
