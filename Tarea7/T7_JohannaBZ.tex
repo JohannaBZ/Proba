@@ -142,7 +142,7 @@ De acuerdo a Mangiafico \cite{mangiafico}, para datos sesgados a la derecha o iz
 
 En este trabajo se utilizó las transformaciones logarítmicas, raíz cuadrada y Box\textendash Cox. Para determinar que tipo de transformación es la más apropiada, se utilizó el coeficiente de determinación ($R^2$), el cual es una medida de la bondad de ajuste de la recta estimada a los datos reales, es decir, entre más cercano esté este valor a la unidad, la transformación tendrá un mejor ajuste. Este coeficiente se calcula elevando al cuadrado el valor de \textit{r} en los modelos de regresión lineal simple el valor de ($R^2$), sin embargo, no es así en regresión múltiple. Existe una modificación de ($R^2$) conocida como ($R^2-ajustado$) que se emplea principalmente en los modelos de regresión múltiple, el cual introduce una penalización cuantos más predictores se incorporan al modelo.
 
-Para el análisis de las trasformaciones, se generaron $1,000$ datos a partir de la ecuación cuadrática de la forma $y=3x_{1}1^2 + rnorm(n)$, donde $x_{1}$ es un número pseudoaleatorio entre $10$ y $60$ y $n$ son las réplicas. Los resultados obtenidos fueron guardados en un dataframe. Se realizó un diagrama de dispersión (ver figura \ref{f3} para apreciar la relación entre las variables $x_{1}$ y $y$), en la cual se observa, claramente, que hay una relación entre estas variables, pero no es lineal, por lo que se procedió a realizar tres diferentes transformaciones.
+Para el análisis de las trasformaciones, se generaron $1,000$ datos a partir de la ecuación cuadrática de la forma $y=3x_{1}^2 + rnorm(n)$, donde $x_{1}$ es un número pseudoaleatorio entre $10$ y $60$ y $n$ son las réplicas. Los resultados obtenidos fueron guardados en un dataframe. Se realizó un diagrama de dispersión (ver figura \ref{f3} para apreciar la relación entre las variables $x_{1}$ y $y$), en la cual se observa, claramente, que hay una relación entre estas variables, pero no es lineal, por lo que se procedió a realizar tres diferentes transformaciones.
 
 \begin{figure}
 \centering
@@ -200,18 +200,3 @@ Se aplicaron las transformaciones logarítmicas, de raíz cuadrada y Box\textend
 \bibliographystyle{plain}
 
 \end{document}
-
-El procedimiento Box\textendash Cox está incluido en el paquete MASS con la función boxcox . Utiliza un procedimiento de log-verosimilitud para encontrar la lambda que se utilizará para transformar la variable dependiente de un modelo lineal (como un ANOVA o una regresión lineal). También se puede utilizar en un solo vector.
-
-Aquí, utilizo la función transformTukey , que realiza pruebas iterativas de Shapiro-Wilk y encuentra el valor lambda que maximiza la estadística W de esas pruebas. En esencia, esto encuentra la transformación de poder que hace que los datos se ajusten lo más posible a la distribución normal con este tipo de transformación.
-
-
-
-
-La función transformTukey en el paquete rcompanion encuentra la lambda que hace que un solo vector de valores, es decir, una variable, se distribuya lo más normalmente posible con una simple transformación de potencia. 
-
- 
-
-El procedimiento Box – Cox está incluido en el paquete MASS con la función boxcox . Utiliza un procedimiento de log-verosimilitud para encontrar la lambda que se utilizará para transformar la variable dependiente de un modelo lineal (como un ANOVA o una regresión lineal). También se puede utilizar en un solo vector.
-
-Debido a que log (0) no está definido, como lo es el logaritmo de cualquier número negativo, cuando se usa una transformación logarítmica, se debe agregar una constante a todos los valores para que todos sean positivos antes de la transformación. A veces, también es útil agregar una constante cuando se utilizan otras transformaciones.
