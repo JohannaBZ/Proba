@@ -255,10 +255,10 @@ Por lo tanto, la varianza y desvición estándar serán:
 V{(X)} & = \left(\frac{2}{3}\right) - (0)^2 \\ \nonumber
 V{(X)} & = \frac{2}{3}. \\ \nonumber
 D{(X)} & = \sqrt{V(X)} \\ \nonumber
-D{(X)} & \thickapprox 0.816. 
+D{(X)} & \sqrt{\frac{2}{3}} \thickapprox 0.816. 
 \end{align}
 
-\subsection{Problema 9, página 263}
+\subsection{Problema 9, página 264}
 A die is loaded so that the probability of a face coming up is proportional to the number on that face. The die is rolled with outcome $X$. Find $V(X)$ and $D(X)$.
 
 \noindent \textbf{Solución}
@@ -307,18 +307,15 @@ E{(X^*)}    & =  E\left(\frac{X - \mu}{\sigma}\right)\\ \nonumber
             & =  \frac{1}{\sigma}[\mu - \mu] \\ \nonumber
             & = 0
 \end{align}
-
+La varianza se calcula por medio de la ecuación \ref{varianza}:
 \begin{align}
 \nonumber
-V{(X^*)}    & =  E{(X^*^2)} - E{(X^*)}\\ \nonumber
-            & =  E\left(\left(\frac{X - \mu}{\sigma}\right)^2 \right)\\ \nonumber
-            & =  \frac{1}{\sigma^2}E((X - \mu)^2) \\ \nonumber
+V{(X^*)}    & =  E{({X^*}^2)} - E{(X^*)}\\ \nonumber
+            & =  E\left[\left(\frac{X - \mu}{\sigma}\right)^2 \right] - 0\\ \nonumber
+            & =  \frac{1}{\sigma^2}E[(X - \mu)^2] \\ \nonumber
             & =  \frac{\sigma^2}{\sigma^2} \\ \nonumber
             & = 1
 \end{align}
-
-
-
 
 \subsection{Problema 3, página 278}
 The lifetime, measure in hours, of the ACME super light bulb is a random variable T with density function $f_{T}(t)$ = $\lambda^2 te^{- \lambda t}$, where $\lambda$ = $0.05$. What is the expected lifetime of this light bulb? What is its variance?
@@ -366,4 +363,3 @@ V{(T)}  & = 2,400 - (40)^2 \\ \nonumber
 \bibliographystyle{plain}
 
 \end{document}
-
