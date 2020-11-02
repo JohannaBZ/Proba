@@ -1,0 +1,369 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\setlength{\parindent}{10mm}
+\setlength{\parskip}{0.9em}
+\def\baselinestretch{1.5}
+
+\usepackage[spanish,mexico]{babel}
+\renewcommand {\spanishtablename}{Cuadro}
+\usepackage[spanish,onelanguage,ruled]{algorithm2e}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{enumerate} 
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage[usenames]{color}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+ \usepackage{fancyvrb}
+ \usepackage{color,soul}
+ \usepackage[dvipsnames]{xcolor}
+ \usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{multirow}
+
+
+\usepackage{verbatim}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+ {fontsize=\footnotesize,
+  %
+  frame=lines,  % top and bottom rule only
+  framesep=1em, % separation between frame and text
+  rulecolor=\color{Gray},
+  %
+  label=\fbox{\color{Black}test.txt},
+  labelposition=topline,
+  %
+  %commandchars=\ \mid \(\), % escape character and argument delimiters for
+                  % commands within the verbatim
+  %commentchar=*        % comment character
+ }
+
+
+\pagestyle{fancy}
+
+\chead{}
+\lhead{} 
+\rhead{}
+\lfoot{\it }
+\cfoot{}
+\rfoot{\thepage}
+
+\title{
+\centering
+Modelos Probabilistas Aplicados \\
+Johanna Bolaños Zúñiga \\
+Matricula: 1883900\\
+Tarea 9
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Poblemas a resolver}
+En el presente trabajo se realizaron las soluciones de diversos problemas del libro de Grinstead \cite{librop} sobre el valor esperado, varianza y desviación estándar de una variable aleatoria (v.a) discreta y continua. Para el cálculo de estos valores se utilizaron las ecuaciones \ref{discreta}, \ref{continua}, \ref{varianza} y \ref{desviacion}, donde $X$ es una v.a con espacio muestral $\Omega$ y distribución de probabilidad $f{(x)}$:
+
+\noindent Valor esperado si $X$ es discreta 
+\begin{equation}
+\mu = E{(X)} = \sum_{x \in \Omega}xf(x).
+\label{discreta}
+\end{equation}
+\noindent Valor esperado si $X$ es continua,
+\begin{equation}
+\mu = E{(X)} = \int_{-\infty}^{\infty}xf(x)dx.
+\label{continua}
+\end{equation}
+\noindent Varianza de $X$,
+\begin{equation}
+\sigma^2 = V(X)= E{(X^2)} - \mu^2
+\label{varianza}
+\end{equation}
+\noindent Desviación estándar de $X$,
+\begin{equation}
+\sigma = D(X)= \sqrt{V(X)}.
+\label{desviacion}
+\end{equation}
+
+\subsection{Problema 1, página 247}
+A card is drawn at random from a deck consisting of cards numbered $2$ through $10$. A player wins 1 dollar if the number on the card is odd and loses $1$ dollar if the number if even. What is the expected value of his winnings?
+
+\noindent \textbf{Solución}
+
+\noindent Numeración de las cartas: $2, 3, 4, 5, 6, 7, 8, 9, 10$. 
+
+\noindent Cantidad total de cartas = $9$, donde hay $5$ cartas pares y $4$ impares. Sí saca una carta par, gana $1$ dólar, de lo contrario, pierde $1$ dólar. Entonces, sea $X$ el evento de que la carta sacada sea par o impar, el valor esperado de ganancia se calcula mediante la ecuación \ref{discreta}:
+\begin{align}
+    \nonumber
+    E{(X)} & = 1\left(\frac{5}{9}\right) - 1\left(\frac{4}{9} \right) \\ \nonumber
+    E{(X)} & = \frac{1}{9}.
+\end{align}
+
+\subsection{Problema 6, página 247}
+A die is rolled twice. Let X denote the sum of the two numbers that turn up, and Y the difference of the numbers (specifically, the number on the first roll minus the number on the second). Show that $E(XY)$ = $E(X)E(Y)$. Are $X$ and $Y$ independent? 
+
+\noindent \textbf{Solución}
+
+\noindent $X$ = $a + b$, $Y$ = $a - b$, donde $a$ es el primer lanzamiento y $b$ el segundo. En total hay $36$ combinaciones posibles al lanzar dos veces el dado.
+
+\noindent Utilizando la ecuación \ref{discreta}, encuentro el valor esperado de la variable aleatoria $Y$:
+\begin{align}
+\begin{split}
+    \nonumber
+    E{(Y)}  & = -1\left(\frac{5}{36}\right) - 2\left(\frac{4}{36} \right) - 3\left(\frac{3}{36}\right) - 4\left(\frac{2}{36}\right) -5\left(\frac{1}{36}\right)  + 1\left(\frac{5}{36}\right) \\ \nonumber
+            & \quad + 2\left(\frac{4}{36} \right) - 3\left(\frac{3}{36}\right) + 4\left(\frac{2}{36}\right) + 5\left(\frac{1}{36}\right) + 0\left(\frac{6}{36}\right) \\ \nonumber
+    E{(Y)}  & = \frac{-1-2-3-4-5+1+2+3+4+5}{36} \\ \nonumber
+    E{(Y)}  & = E{(a-b)} = 0. \\ \nonumber
+\end{split}
+\end{align}
+Entonces, $E(X)E(Y)$ = $E(X)*0$ = $0$
+
+\noindent Ahora, ¿$E(XY)$ = $0$?
+\begin{align}
+    \nonumber
+    E{(XY)} & = E{(a+b)}*E{(a-b)} \\ \nonumber
+    E{(XY)} & = E{(a^2-ab+ba-b^2)} \\ \nonumber
+    E{(XY)} & = E{(a^2-b^2)} = 0.
+\end{align}
+Por lo tanto,  $E(XY)$ = $E(X)E(Y)$ = $0$.
+
+¿Son $X$ y $Y$ variables aleatorias independientes? Para comprobar que lo son o no, basta con encontrar un caso en que no se cumpla la independencia, es decir, $P(X,Y)$ = $P(X)P(Y)$, por ejemplo, si $X$ = $12$ y $Y$ = $0$ y la probabilidad de sacar cualquier cara del dado es de $1/6$:
+\begin{align}
+    \nonumber
+    P{(X=12, \text{ } Y=0)} & = P{(a=6, \, b=6)} \\ \nonumber
+    P{(X=12, Y=0)} & = \frac{1}{36}.
+\end{align}
+Ahora, ¿$P(X)P(Y)$ = $1/36$?
+\begin{align}
+    \nonumber
+    P{(X=12)} & = \frac{1}{36} \\ \nonumber
+    P{(Y=0)}  & = \frac{6}{36} \\ \nonumber
+    P{(X=12)}*P{(Y=0)} & = \frac{1}{36} * \frac{1}{6} \\ \nonumber
+    P{(X=12)}*P{(Y=0)} & = \frac{1}{216}.
+\end{align}
+Entonces, $P{(X=12, Y=0)} \neq P{(X=12)}*P{(Y=0)}$, por lo tanto, $X$ y $Y$ no son variables aleatorias independientes.
+
+\subsection{Problema 15, página 249}
+A box contains two gold balls and three silver balls. You are allowed to choose successively balls from the box at random. You win 1 dollar each time you draw a gold ball and lose 1 dollar each time you draw a silver ball. After a draw, the ball is not replaced. Show that, if you draw until you are ahead by $1$ dollar or until there are no more gold balls, this is a favorable game.
+
+\noindent \textbf{Solución}
+
+\noindent Sea $D$ las bolas doradas y $P$ las bolas plateadas, en la caja hay un total de 5 bolas, $2D$ y $5P$. Entonces, las formas de ganar sería si sacara las bolas en el siguiente orden:
+\begin{itemize}
+    \item La primera bola en sacar es $D$, entonces, su probabilidad sería $2/5$.
+    \item $PDD$, entonces, su probabilidad sería $3/5$ * $2/4$ * $1/3$ = $1/10$. 
+\end{itemize}
+Las formas de perder $1$ dólar serían:
+\begin{itemize}
+    \item $PPPDD$, entonces, su probabilidad sería $3/5$ * $2/4$ * $1/3$ * $1/2$ * $1$ = $1/10$.
+    \item $PDPPD$, entonces, su probabilidad sería $3/5$ * $2/4$ * $2/3$ * $1/2$ * $1$ = $1/10$.
+    \item $PPDPD$, entonces, su probabilidad sería $3/5$ * $2/4$ * $2/3$ * $1/2$ * $1$ = $1/10$.
+\end{itemize}
+
+\noindent Por lo tanto, sea $X$ el evento de ganar o perder en el juego, utilizando la ecuación \ref{discreta}, se encuentra el valor esperado de la variable aleatoria $X$, considerando que el valor por ganar es de $1$ dolar y de $-1$ si pierde, no se considera cuando empata porqué su valor sería de $0$, entonces se tiene:
+\begin{align}
+    \nonumber
+    E{(X)}  & = 1\left(\frac{2}{5}\right) + 1\left(\frac{1}{10}\right) - 1\left(\frac{1}{10} \right) - 1\left(\frac{1}{10} \right) - 1\left(\frac{1}{10} \right) \\ \nonumber
+    E{(X)}  & = \frac{2}{10} = \frac{1}{5}. 
+\end{align}
+
+\subsection{Problema 18, página 249}
+Exactly one of six similar keys opens a certain door. If you try the keys, one after another, what is the expected number of keys that you will have to try before success?
+
+\noindent \textbf{Solución}
+
+\noindent Sea $X$ el número de intentos antes de encontrar la llave correcta, los intentos $F$ antes de encontrar la llave correcta $C$ serían los siguientes:
+
+\begin{itemize}
+    \item $0$ intentos: $C$, entonces, su probabilidad sería $1/6$.
+    \item $1$ intento: $FC$, entonces, su probabilidad sería $5/6$ * $1/5$ = $1/6$.
+    \item $2$ intentos: $FFC$, entonces, su probabilidad sería $5/6$ * $4/5$ * $1/4$ = $1/6$.
+    \item $3$ intentos: $FFFC$, entonces, su probabilidad sería $5/6$ * $4/5$ * $3/4$ * $1/3$ = $1/6$.
+    \item $4$ intentos: $FFFFC$, entonces, su probabilidad sería $5/6$ * $4/5$ * $3/4$ * $2/3$ * $1/2$ * 1 = $1/6$.
+    \item $5$ intentos: $FFFFC$, entonces, su probabilidad sería $5/6$ * $4/5$ * $3/4$ * $2/3$ * $1/2$ * 1 = $1/6$.
+\end{itemize}
+Por lo tanto, el valor esperado de la v.a $X$ la encontramos por medio de la ecuación \ref{discreta}:
+\begin{align}
+    \nonumber
+    E{(X)}  & = 0\left(\frac{1}{6}\right) + 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + 3\left(\frac{1}{6}\right) + 4\left(\frac{1}{6}\right) + 5\left(\frac{1}{6}\right) \\ \nonumber
+    E{(X)}  & = \frac{15}{6} = \frac{5}{2}.
+\end{align}
+
+\subsection{Problema 19, página 249}
+A multiple choice exam is given. A problem has four possible answers, and exactly one answer is correct. The student is allowed to choose a subset of the four possible answers as his answer. If his chosen subset contains the correct answer, the student receives three points, but he loses one point for each wrong answer in his chosen subset. Show that if he just guesses a subset uniformly and randomly his expected score is zero.
+
+\noindent \textbf{Solución}
+
+\noindent De las 4 posibles respuestas (A, B, C, D), el alumno podría escoger, $0$, $1$, $2$, $3$ o $4$ subconjuntos de preguntas como su respuesta, y en caso de estar la respuesta correcta dentro de cada subconjunto escogido, el estudiante ganará 3 puntos, pero perderá 1 por cada pregunta incorrecta, sea $X$ las posibles respuestas que selecciona el alumno, el valor esperado para cada subconjunto se calcula con la ecuación \ref{discreta}:
+
+\begin{itemize}
+    \item Subconjunto con $0$ respuestas, no perdería ni ganaría puntos, por lo tanto, $E(X)$ = $0$.
+    \item Subconjunto con $1$ respuesta, A, B, C o D: 
+    \begin{align}
+    \nonumber
+    E{(X)}  & = 3(1)-3(1) \\ \nonumber
+    E{(X)}  & = 0.
+    \end{align}
+    \item Subconjunto con $2$ respuestas, A-B, A-C, A-D, B-C, B-D o C-D: 
+    \begin{align}
+    \nonumber
+    E{(X)}  & = (3-1)\left(\frac{3}{6}\right) - 2\left(\frac{3}{6}\right)  \\ \nonumber
+    E{(X)}  & = 0.
+    \end{align}
+    \item Subconjunto con $3$ posibles respuestas, A-B-C, A-B-D, A-C-D, B-D-C: 
+    \begin{align}
+    \nonumber
+    E{(X)}  & = (3-2)\left(\frac{3}{4}\right) - 3\left(\frac{1}{4}\right)  \\ \nonumber
+    E{(X)}  & = 0.
+    \end{align}
+    \item Subconjunto con $4$ posibles respuestas, A-B-C-D:
+    \begin{align}
+    \nonumber
+    E{(X)}  & = 3\left(\frac{1}{4}\right) - 1\left(\frac{3}{4}\right)  \\ \nonumber
+    E{(X)}  & = 0.
+    \end{align}  
+\end{itemize}
+En todos los Subconjunto en valor esperado es $0$.
+
+\subsection{Problema 1, página 263}
+A number is chosen at random from the set $S$ = \{$-1, 0, 1$\}. Let $X$ be the number chosen. Find the expected value, variance, and standard deviation of $X$.
+
+\noindent \textbf{Solución}
+
+\noindent Sea $X$ el número escogido, por lo tanto, $p(x)$ = $1/3$, el valor esperado de $X$ se calcula con la ecuación \ref{discreta}, su varianza con la ecuación \ref{varianza} y desviación estándar con la ecuación \ref{desviacion}:
+\begin{align}
+\nonumber
+\mu = E{(X)}    & = -1\left(\frac{1}{3}\right) + 0\left(\frac{1}{3}\right) + 1\left(\frac{1}{3}\right)  \\  \nonumber
+\mu = E{(X)}    & = 0.
+\end{align}
+Ahora, para calcular la varianza, se necesita el valor de $E(X^2)$, entonces:
+\begin{align}
+\nonumber
+E{(X^2)}    & = (-1)^2\left(\frac{1}{3}\right) + (0)^2\left(\frac{1}{3}\right) + (1)^2\left(\frac{1}{3}\right)  \\ \nonumber
+E{(X^2)}    & = \frac{2}{3}.
+\end{align}
+Por lo tanto, la varianza y desvición estándar serán:
+\begin{align}
+V{(X)} & = \left(\frac{2}{3}\right) - (0)^2 \\ \nonumber
+V{(X)} & = \frac{2}{3}. \\ \nonumber
+D{(X)} & = \sqrt{V(X)} \\ \nonumber
+D{(X)} & \thickapprox 0.816. 
+\end{align}
+
+\subsection{Problema 9, página 263}
+A die is loaded so that the probability of a face coming up is proportional to the number on that face. The die is rolled with outcome $X$. Find $V(X)$ and $D(X)$.
+
+\noindent \textbf{Solución}
+
+\noindent Sea $k$ la proporción de la cara del dado cargado, entonces, la probabilidad de cada cara sería: 
+
+\noindent $P(1)$ = $\frac{1}{k}$, $P(2)$ = $\frac{2}{k}$, $P(3)$ = $\frac{3}{k}$, $P(4)$ = $\frac{4}{k}$, $P(5)$ = $\frac{5}{k}$, $P(6)$ = $\frac{6}{k}$ y la suma de estas proporciones debe ser $1$, entonces:
+\begin{align}
+\nonumber
+1 & = \frac{1}{k} + \frac{2}{k} + \frac{3}{k} + \frac{4}{k} + \frac{5}{k} + \frac{6}{k} \\ \nonumber
+k & = 21.
+\end{align}
+El valor esperado de $X$ se calcula con la ecuación \ref{discreta}, su varianza con la ecuación \ref{varianza} y desviación estándar con la ecuación \ref{desviacion}:
+\begin{align}
+\nonumber
+\mu = E{(X)} & = 1\left(\frac{1}{21}\right) + 2\left(\frac{2}{21}\right) + 3\left(\frac{3}{21}\right) + 4\left(\frac{4}{21}\right) + 5\left(\frac{5}{21}\right) + 6\left(\frac{6}{21}\right) \\ \nonumber
+\mu = E{(X)} & = \frac{1+4+9+16+25+36}{21} \\ \nonumber
+\mu = E{(X)} & = \frac{13}{3}.
+\end{align}
+Ahora, para calcular la varianza, se necesita el valor de $E(X^2)$, entonces:
+\begin{align}
+\nonumber
+E{(X^2)}    & = (1)^2\left(\frac{1}{21}\right) + (2)^2\left(\frac{2}{21}\right) + (3)^2\left(\frac{3}{21}\right) + (4)^2\left(\frac{4}{21}\right) + (5)^2\left(\frac{5}{21}\right) + (6)^2\left(\frac{6}{21}\right)  \\ \nonumber
+E{(X^2)}    & = 1\left(\frac{1}{21}\right) + 4\left(\frac{2}{21}\right) + 9\left(\frac{3}{21}\right) + 16\left(\frac{4}{21}\right) + 25\left(\frac{5}{21}\right) + 36\left(\frac{6}{21}\right) \\ \nonumber
+E{(X^2)}    & = \frac{1+8+27+64+125+216}{21} \\ \nonumber
+E{(X^2)}    & = 21
+\end{align}
+Por lo tanto, la varianza y desvición estándar serán:
+\begin{align}
+\nonumber
+V{(X)} & =  21 - \left(\frac{13}{3}\right)^2 \\ \nonumber
+V{(X)} & =\frac{20}{9}. \\ \nonumber
+D{(X)} & = \sqrt{V(X)} \\ \nonumber
+D{(X)} & = \sqrt{\frac{20}{9}} \thickapprox 1.49. 
+\end{align}
+
+\subsection{Problema 12, página 264}
+Let $X$ be a random variable with $\mu = E{(X)}$ and $\sigma^2 = V{(X)}$. Define $X^*$ = $(X - \mu)/\sigma$. The random variable $X^*$ is called the standardized random variable associated with $X$. Show that this standardized random variable has expected value $0$ and variance $1$.
+
+\noindent \textbf{Solución}
+\begin{align}
+\nonumber
+E{(X^*)}    & =  E\left(\frac{X - \mu}{\sigma}\right)\\ \nonumber
+            & =  \frac{1}{\sigma}E(X - \mu) \\ \nonumber
+            & =  \frac{1}{\sigma}[E(X) - E(\mu)] \\ \nonumber
+            & =  \frac{1}{\sigma}[\mu - \mu] \\ \nonumber
+            & = 0
+\end{align}
+
+\begin{align}
+\nonumber
+V{(X^*)}    & =  E{(X^*^2)} - E{(X^*)}\\ \nonumber
+            & =  E\left(\left(\frac{X - \mu}{\sigma}\right)^2 \right)\\ \nonumber
+            & =  \frac{1}{\sigma^2}E((X - \mu)^2) \\ \nonumber
+            & =  \frac{\sigma^2}{\sigma^2} \\ \nonumber
+            & = 1
+\end{align}
+
+
+
+
+\subsection{Problema 3, página 278}
+The lifetime, measure in hours, of the ACME super light bulb is a random variable T with density function $f_{T}(t)$ = $\lambda^2 te^{- \lambda t}$, where $\lambda$ = $0.05$. What is the expected lifetime of this light bulb? What is its variance?
+
+\noindent \textbf{Solución}
+
+\noindent El valor esperado se calcula mediante la ecuación \ref{continua}, entonces: 
+\begin{align}
+\nonumber
+\mu = E{(T)}    & = \int_{0}^{\infty}tf_{T}(t)dt \\ \nonumber
+                & = \int_{0}^{\infty}t(\lambda^2 te^{- \lambda t})dt \\ \nonumber
+                & = \int_{0}^{\infty} t^2 \lambda^2 e^{- \lambda t}dt \longrightarrow U = \lambda t,  \,  dt = \frac{dU}{\lambda} \\ \nonumber
+            & = \int_{0}^{\infty} \frac{U^2 e^{-U}}{\lambda} dU \\ \nonumber
+            & = \frac{1}{\lambda} \int_{0}^{\infty} U^2 e^{-U}dU \Longrightarrow UV - \int_{0}^{\infty} V \, du, \hspace{2mm} A=U^2,  \,  B=e^{-u}\\ \nonumber
+            & = \frac{1}{\lambda} [(AB)|^{\infty}_{0} - \int_{0}^{\infty} BdA] \longrightarrow dA=2UdU \\ \nonumber
+            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - \int_{0}^{\infty} e^{-u}2UdU \right] \\ \nonumber
+            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - 2 \left(\int_{0}^{\infty} e^{-U}UdU \right)\right] \Longrightarrow PQ - \int_{0}^{\infty} Q \, du \longrightarrow P=U,  \,  Q=e^{-U}, \, dP = dU \\ \nonumber \nonumber
+            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - 2 \left(PQ \int_{0}^{\infty} QdU \right) \right] \\ \nonumber 
+            & = \frac{1}{\lambda} \left[ (AB)|^{\infty}_{0} - 2 \left(PQ + Q)|^{\infty}_{0} \right) \right] \longrightarrow P=U,  \,  Q=e^{-U} \\ \nonumber
+            & = \frac{1}{\lambda} [(AB)|^{\infty}_{0}  - 2 \left(Ue^{-U} + e^{-U} \right)|^{\infty}_{0}] \longrightarrow A=U^2,  \,  B=e^{-u} \\ \nonumber
+            & = \frac{1}{\lambda} [(U^2 e^{-U})|^{\infty}_{0} - 2 \left(Ue^{-U} + e^{-U} \right)|^{\infty}_{0}] \longrightarrow A=U^2,  \,  B=e^{-u} \\ \nonumber
+            & = \frac{1}{\lambda} [(U^2 e^{-U})|^{\infty}_{0} + \left(-2 Ue^{-U} - 2e^{-U} \right)|^{\infty}_{0}] \longrightarrow U = \lambda t \\ \nonumber
+            & = \frac{1}{\lambda} [((\lambda t)^2 e^{-\lambda t})|^{\infty}_{0} + \left(-2\lambda t e^{-\lambda t} - 2e^{-\lambda t} \right)|^{\infty}_{0}] \\ \nonumber
+            & = \frac{2}{\lambda} = \frac{2}{0.05} \\ \nonumber
+            & = 40. \\ \nonumber
+\end{align}
+Ahora, para calcular la varianza, se necesita el valor de $E(T^2)$, entonces:
+\begin{align}
+\nonumber
+E{(T^2)}    & = \int_{0}^{\infty}t^2f_{T}(t)dt \\ \nonumber
+            & = \int_{0}^{\infty}t^2(\lambda^2 te^{- \lambda t})dt \\ \nonumber
+            & = \int_{0}^{\infty} t^3 \lambda^2 e^{- \lambda t}dt \\ \nonumber
+            & = \frac{6}{\lambda^2} = \frac{6}{(0.05)^2} \\ \nonumber
+            & = 2,400
+\end{align}
+Por lo tanto, para calcular la varianza se utiliza la ecuación \ref{varianza}:
+\begin{align}
+V{(T)}  & = 2,400 - (40)^2 \\ \nonumber
+        & = 2,400 - 1,600 \\ \nonumber
+        & = 800 \\ \nonumber
+\end{align}
+
+
+\bibliography{refProbabilidad}
+\bibliographystyle{plain}
+
+\end{document}
+
