@@ -325,22 +325,21 @@ The lifetime, measure in hours, of the ACME super light bulb is a random variabl
 \noindent El valor esperado se calcula mediante la ecuación \ref{continua}, entonces: 
 \begin{align}
 \nonumber
-\mu = E{(T)}    & = \int_{0}^{\infty}tf_{T}(t)dt \\ \nonumber
-                & = \int_{0}^{\infty}t(\lambda^2 te^{- \lambda t})dt \\ \nonumber
+\mu = E{(T)}    & = \int_{0}^{\infty}tf_{T}(t) \, dt \\ \nonumber
+                & = \int_{0}^{\infty}t(\lambda^2 te^{- \lambda t}) \, dt \\ \nonumber
                 & = \int_{0}^{\infty} t^2 \lambda^2 e^{- \lambda t}dt \longrightarrow U = \lambda t,  \,  dt = \frac{dU}{\lambda} \\ \nonumber
-            & = \int_{0}^{\infty} \frac{U^2 e^{-U}}{\lambda} dU \\ \nonumber
-            & = \frac{1}{\lambda} \int_{0}^{\infty} U^2 e^{-U}dU \Longrightarrow UV - \int_{0}^{\infty} V \, du, \hspace{2mm} A=U^2,  \,  B=e^{-u}\\ \nonumber
-            & = \frac{1}{\lambda} [(AB)|^{\infty}_{0} - \int_{0}^{\infty} BdA] \longrightarrow dA=2UdU \\ \nonumber
-            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - \int_{0}^{\infty} e^{-u}2UdU \right] \\ \nonumber
-            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - 2 \left(\int_{0}^{\infty} e^{-U}UdU \right)\right] \Longrightarrow PQ - \int_{0}^{\infty} Q \, du \longrightarrow P=U,  \,  Q=e^{-U}, \, dP = dU \\ \nonumber \nonumber
-            & = \frac{1}{\lambda} \left[(AB)|^{\infty}_{0}  - 2 \left(PQ \int_{0}^{\infty} QdU \right) \right] \\ \nonumber 
-            & = \frac{1}{\lambda} \left[ (AB)|^{\infty}_{0} - 2 \left(PQ + Q)|^{\infty}_{0} \right) \right] \longrightarrow P=U,  \,  Q=e^{-U} \\ \nonumber
-            & = \frac{1}{\lambda} [(AB)|^{\infty}_{0}  - 2 \left(Ue^{-U} + e^{-U} \right)|^{\infty}_{0}] \longrightarrow A=U^2,  \,  B=e^{-u} \\ \nonumber
-            & = \frac{1}{\lambda} [(U^2 e^{-U})|^{\infty}_{0} - 2 \left(Ue^{-U} + e^{-U} \right)|^{\infty}_{0}] \longrightarrow A=U^2,  \,  B=e^{-u} \\ \nonumber
-            & = \frac{1}{\lambda} [(U^2 e^{-U})|^{\infty}_{0} + \left(-2 Ue^{-U} - 2e^{-U} \right)|^{\infty}_{0}] \longrightarrow U = \lambda t \\ \nonumber
-            & = \frac{1}{\lambda} [((\lambda t)^2 e^{-\lambda t})|^{\infty}_{0} + \left(-2\lambda t e^{-\lambda t} - 2e^{-\lambda t} \right)|^{\infty}_{0}] \\ \nonumber
-            & = \frac{2}{\lambda} = \frac{2}{0.05} \\ \nonumber
-            & = 40. \\ \nonumber
+                & = \int_{0}^{\infty} \frac{U^2 e^{-U}}{\lambda} \, dU \\ \nonumber
+                & = \frac{1}{\lambda} \color{red} \int_{0}^{\infty} U^2 e^{-U} \, dU \color{black} \Longrightarrow AB - \int_{0}^{\infty} B \, dA, \hspace{2mm} A=U^2,  \,  B=-e^{-u}\\ \nonumber
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} - \int_{0}^{\infty} B \, dA \right] \longrightarrow dA=2U \, dU \\ \nonumber
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} - \int_{0}^{\infty} -e^{-u}2UdU \right] \\ \nonumber
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} + 2 \left(\int_{0}^{\infty} e^{-U}UdU \right)\right] \Longrightarrow PQ - \int_{0}^{\infty} Q \, dp \longrightarrow P=U,  \,  Q=e^{-U}, \, dP = dU \\ \nonumber
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} + 2 \left(PQ - \int_{0}^{\infty} QdU \right) \right] \\ \nonumber 
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} + 2 \left \left(PQ - e^{-U}) \right |_{0}^{\infty} \right) \right] \longrightarrow P=U,  \,  Q=-e^{-U} \\ \nonumber
+                & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} + 2 \left \left(Ue^{-U} - e^{-U} \right) \right |_{0}^{\infty} \right] \longrightarrow A=U^2,  \,  B=-e^{-u} \\ \nonumber
+                & = \frac{1}{\lambda} \left[ \left (-U^2 e^{-U}) \right |_{0}^{\infty} + \left \left(-2Ue^{-U} - 2e^{-U} \right) \right |_{0}^{\infty} \right] \longrightarrow U= \lambda t \\ \nonumber
+                & = \frac{1}{\lambda} \left[(\left -e^{-U}(U^2+2U+2)) \right |_{0}^{\infty} \right] \\ \nonumber
+                & = \frac{2}{\lambda} = \frac{2}{0.05} \\ \nonumber
+                & = 40. \\ \nonumber 
 \end{align}
 Ahora, para calcular la varianza, se necesita el valor de $E(T^2)$, entonces:
 \begin{align}
@@ -348,6 +347,13 @@ Ahora, para calcular la varianza, se necesita el valor de $E(T^2)$, entonces:
 E{(T^2)}    & = \int_{0}^{\infty}t^2f_{T}(t)dt \\ \nonumber
             & = \int_{0}^{\infty}t^2(\lambda^2 te^{- \lambda t})dt \\ \nonumber
             & = \int_{0}^{\infty} t^3 \lambda^2 e^{- \lambda t}dt \\ \nonumber
+            & = \frac{1}{\lambda} \int_{0}^{\infty} t^3 \lambda^3 e^{- \lambda t} \, dt \longrightarrow U = \lambda t,  \,  dt = \frac{dU}{\lambda} \\ \nonumber
+            & = \frac{1}{\lambda^2} \int_{0}^{\infty} U^3 e^{-U} \, dU \Longrightarrow AB - \int_{0}^{\infty} B \, dA, \hspace{2mm} A=U^3,  \,  B=-e^{-u} \\ \nonumber
+            & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} - \int_{0}^{\infty} B \, dA \right] \longrightarrow dA=3U \, dU \\ \nonumber
+            & = \frac{1}{\lambda} \left[\left (AB) \right |_{0}^{\infty} - \int_{0}^{\infty} B \, 3U \, dU \right] \longrightarrow A=U^3,  \,  B=-e^{-u} \\ \nonumber
+            & = \frac{1}{\lambda^2} \left[ \left (-U^3 e^{-U}) \right |_{0}^{\infty} - \int_{0}^{\infty} -e^{-u} 3U^2 \, dU \right] \\ \nonumber
+            & = \frac{1}{\lambda^2} \left[ \left (-U^3 e^{-U}) \right |_{0}^{\infty} + 3 \left( \color{red} \int_{0}^{\infty} U^2 e^{-u} \, dU \color{black} \right) \right] \\ \nonumber
+            & = \frac{1}{\lambda^2} [ \left (-U^3 e^{-U}) \right |_{0}^{\infty} + 3(2) ] \\ \nonumber
             & = \frac{6}{\lambda^2} = \frac{6}{(0.05)^2} \\ \nonumber
             & = 2,400
 \end{align}
