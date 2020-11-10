@@ -210,6 +210,25 @@ Para este ejercicio, se realizó una simulación para determinar si el valor esp
 
 De acuerdo a lo anterior, podemos observar que en la figura \ref{bombillasVE} y \ref{bombillasVar}, sin importar el tipo de distribución que sigue la vida útil del lote de $100$ bombillas ACME (en este caso, una distribución exponencial, uniforme, normal y de Poisson con valores positivos) el valor esperado y varianza, respectivamente, de la vida útil de estas bombillas es igual al calculado analíticamente, es decir $E{(X)}$ = $40$ y su $V{X()}$ = $2.400$.
 
+\subsection{Problema 1, página 263} \label{problema4}
+\texttt{A number is chosen at random from the set $S$ = \{$-1, 0, 1$\}. Let $X$ be the number chosen. Find the expected value, variance, and standard deviation of $X$.}
+
+\noindent \textbf{Solución}
+
+\noindent Sea $X$ el número escogido, por lo tanto, $p(x)$ = $1/3$, el valor esperado de $X$, la varianza y desviación estándar fueron calculados mediante las ecuaciones \ref{discreta}, \ref{varianza} y \ref{desviacion}, las cuales dieron como resultado un $E{(X)}$ = $0$, una $V{(X)}$ = $\frac{2}{3} \thickapprox 0.66$ y una $D{(X)}$ $\thickapprox 0.816$.
+
+Para este problema, en la simulación se consideró realizar $10,000$ selecciones entre los números $-1$, $0$ y $1$ y se calculó el valor esperado, varianza y desviación estándar con los datos obtenidos. Como resultado de esta simulación se obtuvo un valor esperado de $-0.002$, una varianza de $0.670$ y una desviación estándar de $0.818$, lo cual es muy similar a los valores obtenidos de manera analítica. En la figura \ref{seleccion} se muestra la frecuencia de selección de $X$.
+
+
+\begin{figure}[h]
+\centering
+    \includegraphics[scale=0.7]{Figures/seleccion.png}
+    \caption{Frecuencia de selección entre los números $-1$, $0$ y $1$ (problema \ref{problema4})}
+    \label{seleccion}
+\end{figure}
+
+
+
 \bibliography{refProbabilidad}
 \bibliographystyle{plain}
 
