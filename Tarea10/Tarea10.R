@@ -58,32 +58,6 @@ valorEsperados = numeric()
 varianza = numeric()
 desviacion = numeric()
 
-for(i in 10:100){
-	dadoCargado = sample(1:6, i, replace = TRUE, prob = c(1/21, 2/21, 3/21, 4/21, 5/21, 6/21));
-	if(length(dadoCargado) == 10){
-		datos10 <- c(dadoCargado);
-		tbdatos10 <- data.frame(table(datos10));
-		names(tbdatos10) <- c("cara", "Freq");
-	}
-	if(length(dadoCargado) == 50){
-		datos50 <- c(dadoCargado);
-		tbdatos50 <- data.frame(table(datos50));
-		names(tbdatos50) <- c("cara", "Freq");
-	}
-	if(length(dadoCargado) == 80){
-		datos80 <- c(dadoCargado);
-		tbdatos80 <- data.frame(table(datos80));
-		names(tbdatos80) <- c("cara", "Freq");
-	}
-	tabla <-data.frame(table(dadoCargado)/i);
-	mu=sum(as.numeric(paste(tabla$dadoCargado))*tabla$Freq);
-	valorEsperados = c(valorEsperados, mu);
-	var = sum(as.numeric(paste(tabla$dadoCargado))^2*tabla$Freq)-(mu)^2
-	varianza = c(varianza, var);
-	desv = sqrt(var);
-	desviacion = c(desviacion, desv);
-}
-
 #%%%% VE, Var y Desv %%%%
 
 #View(valorEsperados)
@@ -231,6 +205,23 @@ barplot(tablaVar$y~tablaVar$x,
 	ylab=labelYVar,
 	col=colores,
 	ylim=c(0,2500), axis.lty = 1)
+dev.off()
+
+#%%%%%%%%%%%% seleccionar entre -1, 0 y 1 %%%%%%%%%%%%%%%%%%
+
+n=10000
+datos = numeric()
+for(i in 1:n){
+	datos = c(datos, sample(-1:1,1))
+}
+
+tabla <- data.frame(table(datos)/n)
+mu=sum(as.numeric(paste(tabla$datos))*tabla$Freq);
+varianza = var(datos)
+desviacion = sd(datos)
+
+png("seleccion.png", width=2000,height=2500,res=500)
+barplot(table(datos), col=rainbow(5), xlab = "Valores de X", ylab = "Frecuancia")
 dev.off()
 
 
