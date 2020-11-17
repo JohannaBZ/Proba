@@ -164,7 +164,7 @@ En el cuadro \ref{tablacontingencia}, se muestra la tabla de contingencia para l
 \label{tablacontingencia}
 \end{table}
 
-Para ejecutar la prueba de $\chi^{2}$ se utilizó la función \texttt{chisq.test()} del programa R, obteniendo como resultado un  $\chi^{2} \thickapprox 17.56$ con $9$ grados de libertad y un valor $p$ = $0.040$, por lo cual se procede a \textit{rechazar} la hipótesis nula con un nivel de confianza del $95\%$, lo que implica que al parecer se está seleccionando con mayor frecuencia algún valor de alfa dentro del conjunto dado. Este resultado tiene mucha lógica, ya que el algoritmo va seleccionando con mayor frecuencia aquellos valores de alfa que presentan mejor desempeño. El código empleado en el software R versión 4.0.2 para la prueba de chi cuadrada ($\chi^{2}$) se encuentra en el repositorio GitHub \cite{github}.
+Para ejecutar la prueba de $\chi^{2}$ se utilizó la función \texttt{chisq.test()} del programa R, obteniendo como resultado un  $\chi^{2}$ = $17.56$ con $9$ grados de libertad y un valor $p$ = $0.040$, por lo cual se procede a \textit{rechazar} la hipótesis nula con un nivel de confianza del $95\%$, lo que implica que al parecer se está seleccionando con mayor frecuencia algún valor de alfa dentro del conjunto dado. Este resultado tiene mucha lógica, ya que el algoritmo va seleccionando con mayor frecuencia aquellos valores de alfa que presentan mejor desempeño. El código empleado en el software R versión 4.0.2 para la prueba de chi cuadrada ($\chi^{2}$) se encuentra en el repositorio GitHub \cite{github}.
 
 \VerbatimInput{chi.txt}
 
