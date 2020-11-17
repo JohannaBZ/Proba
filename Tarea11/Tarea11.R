@@ -1,12 +1,17 @@
-source("http://bioconductor.org/biocLite.R")
-biocLite("EBImage")
+# Modelos Probabilistas Aplicados
+# Tarea 11
+# Tema: Problemas teoricos - practicos
+# Johanna Bolaños Zuñiga
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install(version = "3.12")
+#%%%%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-install.packages("magick")
+if (!require("magick")) {
+    install.packages('magick')
+}
+
 library(magick)
+
+#%%%%%%%%%%%%%%% Convolucion %%%%%%%%%%%%%%%%
 
 imagen <- image_read("darkly.jpg")
 imagen <- imagen %>% image_convert(colorspace = 'gray')
@@ -69,7 +74,7 @@ tablaDer = numeric()
 
 while (length(tablaIzq) < rep) {
 x <- rnorm(n,100,20)
-y <- rpois(n,0.5)
+y <- rpois(n,0.5)+x
 	x1 <- (a*x)+b
 	y1 <- (c*y)+d
 	covLadoIzq <- cov(x1,y1)
@@ -95,8 +100,8 @@ tablaIzqVar = numeric()
 tablaDerVar = numeric()
 
 while (length(tablaIzqVar) < rep) {
-x <- runif(n)
-y <- rexp(n,0.05)
+x <- rexp(n,0.8)
+y <- rpois(n,0.5)+x
 	w <- x+y
 	varLadoIzq <- var(w)
 	tablaIzqVar = c(tablaIzqVar, varLadoIzq)
@@ -111,15 +116,7 @@ labelXIzq  <- c("Valores Var(X+Y)")
 labelXDer  <- c("Valores Var(X) + Var(Y) + 2Cov(X,Y)")
 png("var-unif-exp.png", width=9000,height=6000,res=900)
 par(mfcol = c(1, 2))
-hist(tablaIzqVar, cex.lab=1.3, col=palette("Dark 2"), labels=T, main=NULL, xlab=labelXIzq, ylab=labelY, ylim=c(0,35))
-hist(tablaDerVar, cex.lab=1.3, col=palette("Dark 2"), labels=T, main=NULL, xlab=labelXDer, ylab=labelY, ylim=c(0,35))
+hist(tablaIzqVar, cex.lab=1.3, col=palette("Dark 2"), labels=T, main=NULL, xlab=labelXIzq, ylab=labelY, ylim=c(0,40))
+hist(tablaDerVar, cex.lab=1.3, col=palette("Dark 2"), labels=T, main=NULL, xlab=labelXDer, ylab=labelY, ylim=c(0,40))
 dev.off()
 
-x <- runif(n)
-y <- rexp(n,0.05)
-
-x <- rnorm(n,100,20)
-y <- rpois(n,0.5)
-
-x <- rexp(n,0.8)
-y <- rpois(n,0.5)
