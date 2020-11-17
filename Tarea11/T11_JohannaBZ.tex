@@ -12,7 +12,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{caption} 
-\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm, amsfonts}
 \usepackage{enumerate} 
 \usepackage{fancyhdr}
 \usepackage{anysize} 
@@ -132,7 +133,7 @@ Chi cuadrada ($\chi^2$) es la distribución de la suma de variables aleatorias c
 %$k$ es el número de categorías y 
 En el tema de tesis que actualmente se desarrolla, se utiliza un GRASP (abreviatura de \textit{greedy randomized adaptive search procedures}) reactivo para hallar la solución al  problema. Este algoritmo depende de un valor alfa ($\alpha$) para construir la solución. Para la afinación del parámetro $\alpha$ se decidió utilizar una estrategia reactiva en la cual el valor de $\alpha$ se adapta dinámicamente según los resultados obtenidos en las iteraciones previas, por lo tanto, se utiliza un conjunto discreto de valores predeterminados de alfas $A = \{\alpha_{1},\, \alpha_{2}, \, \dots, \alpha_{k}\}$.
 
-En la experimentación llevada a cabo para la tesis, se tiene en total de $k=10$ valores de alfa diferentes y se ejecutaron $n=1000$ iteraciones del algoritmo para cada instancia, actualizando la probabilidad de selección para cada alfa cada $100$ iteraciones. Para la aplicación de la prueba $\chi^2$ se plantea como hipótesis nula ($H_{0}$) que las alfas en cada instancia son seleccionadas con la misma probabilidad y, como hipótesis alternativa ($H_{1}$) que las alfas en cada instancia no son seleccionadas con la misma probabilidad.
+En la experimentación llevada a cabo para la tesis, se tiene en total de $k=10$ valores de alfa diferentes y se ejecutaron $n=1,000$ iteraciones del algoritmo para cada instancia, actualizando la probabilidad de selección para cada alfa cada $100$ iteraciones. Para la aplicación de la prueba $\chi^2$ se plantea como hipótesis nula ($H_{0}$) que las alfas en cada instancia son seleccionadas con la misma probabilidad y, como hipótesis alternativa ($H_{1}$) que las alfas en cada instancia no son seleccionadas con la misma probabilidad.
 
 En el cuadro \ref{tablacontingencia}, se muestra la tabla de contingencia para la aplicación de la prueba $\alpha$. La frecuencia de cada alfa se tomó de los resultados arrojados por el algoritmo y el valor esperado de cada alfa se determinó mediante la ecuación \ref{probabilidad}:
 \begin{align} 
@@ -148,55 +149,56 @@ En el cuadro \ref{tablacontingencia}, se muestra la tabla de contingencia para l
 \hline
 \multirow{2}{*}{\textbf{Alfa}}       & \multicolumn{2}{c|}{\textbf{Frecuencia}}                                                                                                                       & \multicolumn{3}{c|}{\textbf{Diferencia cuadrada}}                                            \\ \cline{2-6} 
                                      & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Observada\\ ($E$)\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Esperada\\ ($E$)\end{tabular}} & \multicolumn{1}{c|}{E-O} & \multicolumn{1}{c|}{$(E-O)^2$} & \multicolumn{1}{c|}{Normalizada} \\ \hline
-0.06                                 & 105                                                                            & 100                                                                           & -95                      & 9.025                          & 902,5                            \\ \hline
-0.07                                 & 99                                                                             & 100                                                                           & -89                      & 7.921                          & 792,1                            \\ \hline
-0.08                                 & 113                                                                            & 100                                                                           & -103                     & 10.609                         & 1.060,9                          \\ \hline
-0.09                                 & 124                                                                            & 100                                                                           & -114                     & 12.996                         & 1.299,6                          \\ \hline
-0.10                                 & 110                                                                            & 100                                                                           & -100                     & 10.000                         & 1.000                            \\ \hline
-0.15                                 & 90                                                                             & 100                                                                           & -80                      & 6.400                          & 640                              \\ \hline
-0.20                                 & 106                                                                            & 100                                                                           & -96                      & 9.216                          & 921,6                            \\ \hline
-0.25                                 & 84                                                                             & 100                                                                           & -74                      & 5.476                          & 547,6                            \\ \hline
-0.30                                 & 82                                                                             & 100                                                                           & -72                      & 5.184                          & 518,4                            \\ \hline
-0.35                                 & 87                                                                             & 100                                                                           & -77                      & 5.929                          & 592,9                            \\ \hline
-\multicolumn{1}{|l|}{\textbf{Total}} & \textbf{1.000}                                                                 & \textbf{100}                                                                  & \textbf{-900}            & \textbf{82.756}                & \textbf{8.275,6}                 \\ \hline
+0.06                                 & 105                                                                            & 100                                                                           & -95                      & 9,025                          & 902.5                            \\ \hline
+0.07                                 & 99                                                                             & 100                                                                           & -89                      & 7,921                          & 792.1                            \\ \hline
+0.08                                 & 113                                                                            & 100                                                                           & -103                     & 10,609                         & 1,060.9                          \\ \hline
+0.09                                 & 124                                                                            & 100                                                                           & -114                     & 12,996                         & 1,299.6                          \\ \hline
+0.10                                 & 110                                                                            & 100                                                                           & -100                     & 10,000                         & 1,000                            \\ \hline
+0.15                                 & 90                                                                             & 100                                                                           & -80                      & 6,400                          & 640                              \\ \hline
+0.20                                 & 106                                                                            & 100                                                                           & -96                      & 9,216                          & 921.6                            \\ \hline
+0.25                                 & 84                                                                             & 100                                                                           & -74                      & 5,476                          & 547.6                            \\ \hline
+0.30                                 & 82                                                                             & 100                                                                           & -72                      & 5,184                          & 518.4                            \\ \hline
+0.35                                 & 87                                                                             & 100                                                                           & -77                      & 5,929                          & 592.9                            \\ \hline
+\multicolumn{1}{|l|}{\textbf{Total}} & \textbf{1,000}                                                                 & \textbf{1,000}                                                                  & \textbf{-900}            & \textbf{82,756}                & \textbf{8,275.6}                 \\ \hline
 \end{tabular}
 \label{tablacontingencia}
 \end{table}
 
-Para ejecutar la prueba de $\chi^{2}$ se utilizó la función \texttt{chisq.test()} del programa R, obteniendo como resultado un  $\chi^{2} \thickapprox 17.56$ con $9$ grados de libertad y un valor $p$ = $0.040$, por lo cual se procede a \textit{rechazar} la hipótesis nula con un nivel de confianza del $95\%$, lo que implica que al parecer se está seleccionando con mayor frecuencia algún valor de alfa dentro del conjunto dado. Este resultado tiene mucha lógica, ya que el algoritmo va seleccionando con mayor frecuencia aquellos valores de alfa que presentan mejor desempeño.
+Para ejecutar la prueba de $\chi^{2}$ se utilizó la función \texttt{chisq.test()} del programa R, obteniendo como resultado un  $\chi^{2} \thickapprox 17.56$ con $9$ grados de libertad y un valor $p$ = $0.040$, por lo cual se procede a \textit{rechazar} la hipótesis nula con un nivel de confianza del $95\%$, lo que implica que al parecer se está seleccionando con mayor frecuencia algún valor de alfa dentro del conjunto dado. Este resultado tiene mucha lógica, ya que el algoritmo va seleccionando con mayor frecuencia aquellos valores de alfa que presentan mejor desempeño. El código empleado en el software R versión 4.0.2 para la prueba de chi cuadrada ($\chi^{2}$) se encuentra en el repositorio GitHub \cite{github}.
 
-%\VerbatimInput{Resulpruebas/chi.txt}
-El código empleado en el software R versión 4.0.2 \cite{r} para la prueba de chi cuadrada ($\chi^{2}$) se encuentra en el repositorio GitHub \cite{github}.
+\VerbatimInput{chi.txt}
 
 \section{Demostraciones numérica y analítica}
 
-Sea $X$, $Y$ variables aleatorias independientes y $a$, $b$, $c$, $d$ son constantes conocidas, demostrar que:
+Sea $X$, $Y$ variables aleatorias y $a$, $b$, $c$, $d$ son constantes conocidas, demostrar que:
 
 \begin{enumerate}[(a)]
-    \item $Cov(aX + b, \, cY + d) = acCov[(X, \, Y]$.
-    \item $Var[X + Y] = Var[X] + Var[Y] + 2Cor[X,Y]$.
+    \item Cov($aX + b, \, cY + d$) = $ac$Cov[($X, \, Y$].
+    \item Var[$X + Y$] = Var[$X$] + Var[$Y$] + 2Cov[$X,Y$].
 \end{enumerate}
 
 \noindent Con base en el desarrollo del teorema $6.2$ y $6.4$ del libro de Grinstead \cite{librop}, se tiene que:
-\begin{align}
+\begin{align} \label{valorEsperado}
     \nonumber
-    Cov(aX + b, \, cY + d)  & = E[(aX + b)(cY + d)] - E[(aX + b)]E[(cY + d)] \\ \nonumber
+    \text{Cov}(aX + b, \, cY + d)  & = E[(aX + b)(cY + d)] - E[(aX + b)]E[(cY + d)] \\ \nonumber
     & = E(acXY + aXd + bcY + bd) − [aE(X) + b][cE(Y) + d] \\ \nonumber
     & =  acE(XY) + adE(X) + bcE(Y) + bd -[acE(X)E(Y) + adE(X) + bcE(Y) + bd] \\ \nonumber
     & =  acE(XY ) + adE(X) + bcE(Y) + bd - acE(X)E(Y) - adE(X) - bcE(Y) - bd \\ \nonumber
     & =  acE(XY) − acE(X)E(Y) \\
-    & = acCov(X, Y). \label{valorEsperado} \\ \nonumber 
+    & = ac\text{Cov}(X, Y).  
 \end{align}
+
 \noindent De acuerdo al desarrollo del teorema $6.6$ y $6.8$ del libro de Grinstead \cite{librop}, se tiene que:
-\begin{align}
+\begin{align} \label{varianza}
     \nonumber
-    Var[X + Y]  & =  E[(X + Y )^2] − [E(X) + E(Y)]^2 \\ \nonumber
+    \text{Var}[X + Y]  & =  E[(X + Y )^2] − [E(X) + E(Y)]^2 \\ \nonumber
     & =  E(X^2 + 2XY + Y^2) - [E(X)^2 + 2E(X)E(Y) + E(Y)^2]  \\ \nonumber
     & =  E(X^2) + 2E(XY) + E(Y^2) - E(X)^2 - 2E(X)E(Y) - E(Y)^2 \\ \nonumber
     & = E(X^2) - E(X)^2 + E(Y^2) - E(Y)^2 + 2[E(XY) - E(X)E(Y) \\ 
-    & =  Var[X] + Var[Y] + 2Cor[X,Y]. \label{varianza} \\ \nonumber
+    & =  \text{Var}[X] + \text{Var}[Y] + 2\text{Cov}[X,Y]. 
 \end{align}
-Para la demostración numérica, se generaron $100$ valores aleatorios para $X$ y $Y$ (donde no necesariamente son independientes) y se estableció $a=5$, $b=100$, $c=20.5$ y $d=0.85$. Se realizaron $100$ replicas aplicando las ecuaciones \ref{valorEsperado} y \ref{varianza}, donde $X$ y $Y$ tenían diferente tipo de distribución (uniforme, normal, exponencial y Poisson). Los resultados de la simulación para la covarianza y varianza de estos valores se muestran en las figuras \ref{resultadosValorE} y \ref{resultadosVar}, respectivamente, en las que se puede observar que se cumple la igualdad de las ecuaciones \ref{valorEsperado} y \ref{varianza}, respectivamente, sin importar el tipo de distribución y o la independencia de variables aleatorias $X$ y $y$ (ver figuras \ref{resultadosValorEdep} y \ref{resultadosVardep}). 
+
+Para la demostración numérica, se generaron $100$ valores aleatorios para $X$ y $Y$ (donde no necesariamente son independientes) y se estableció $a=5$, $b=100$, $c=20.5$ y $d=0.85$. Se realizaron $100$ replicas aplicando las ecuaciones \ref{valorEsperado} y \ref{varianza}, donde $X$ y $Y$ tenían diferente tipo de distribución (uniforme, normal, exponencial y Poisson). Los resultados de la simulación para la covarianza y varianza de estos valores se muestran en las figuras \ref{resultadosValorE} y \ref{resultadosVar}, respectivamente, en las que se puede observar que se cumple la igualdad de las ecuaciones \ref{valorEsperado} y \ref{varianza}, respectivamente, sin importar el tipo de distribución y o la independencia de variables aleatorias $X$ y $Y$ (ver figuras \ref{resultadosValorEdep} y \ref{resultadosVardep}). 
 
 \begin{figure}[h]
     \begin{center}
@@ -240,43 +242,9 @@ Para la demostración numérica, se generaron $100$ valores aleatorios para $X$ 
     \end{center}
 \end{figure}
 
-Todas las simulaciones fueron realizadas en el software R versión 4.0.2 \cite{r} y el código empleado se encuentra en el repositorio GitHub \cite{github}.
+Todas las simulaciones fueron realizadas en el software R versión 4.0.2 y el código empleado se encuentra en el repositorio GitHub \cite{github}.
 
 \bibliography{refProbabilidad}
 \bibliographystyle{plain}
 
 \end{document}
-
-
-Si $X$ e $Y$ son dos variables aleatorias independientes con funciones de densidad de probabilidad $f{1}$ y $f{2}$, respectivamente, entonces la densidad de probabilidad de la suma $(X + Y) = Z$ estará dada por la convolución $f_{c}$, mostrada en la ecuación \ref{discreta}, donde $X=i$ y $Y=j-i$:
-
-\begin{align}
-f_{c} & = f{1}*f{2} \label{discreta} \\ \nonumber 
-f_{c}{(x)} & = \sum_{z}f1(z) \times f2{(x-Z)}, \\ \nonumber
-f_{c}{(z)} & = \sum_{x}f1(x) \times f2{(z-x)}. \\ \nonumber
-\end{align}
-
-Para el caso continuo, si $f$ y $g$ son funciones continuas,  ($f*g$)($t$), en un sistema unidimensional, se define como la integral del producto de ambas funciones después de desplazar una de ellas una distancia $t$ y se calcula mediante la ecuación \ref{continua}:
-\begin{align} 
-(f*g)(t) & = \int_{-\infty}^{\infty}f(t-x) \times g(x)dx = \int_{-\infty}^{\infty}f(t-y) \times g(y)dy  \label{continua} \\ \nonumber 
-\end{align}
-
-\noindent La ecuación \ref{continua} se puede reescribir mediante la la ecuación \ref{continuamod}, donde $\tau$ es la variable sobre la cual se realiza el desplazamiento:
-\begin{align} 
-(f*g)(t) & = \int_{-\infty}^{\infty}f(t-\tau) \times g(\tau)d\tau  \label{continuamod} \\ \nonumber 
-\end{align}
-
-
-
-
-Para el caso de la señales digitales, si $A{n}$ y $B{n}$ son funciones con respecto a un valor $n$ entero, entonces la convolución en un sistema unidimensional, se representa mediante la ecuación \ref{discretaseñal}:
-\begin{align} 
-A{[n_{a}]} * B{[n_{b}]} = C{[n_{c}]} & = \sum_{\tau=0}^{n_{a}-1} A[\tau] \times B{[n_{c}-\tau}], \label{discretaseñal} \\  \nonumber
-\end{align}
-\noindent donde $0 \leq n_{c} < n_{a} + n_{b} - 1$ y $\tau$ es la variable sobre la cual se realiza el desplazamiento.
-
-Sin embargo, debido a que las imágenes son bidimensionales, es neceario la extensión a $2$-D de la ecuación \ref{discretaseñal} para realizar la convolución con imágenes, la cuál es mostrada en la ecuación \ref{discretabi}:
-\begin{align} 
-A{[i_{a}, \, j_{a}]} * B{[i_{b}, \, j_{b}]} = C{[i_{c}, \, j_{c}]} & = \sum_{\tau_{1}=0}^{i_{a}-1} \sum_{\tau_{2}=0}^{j_{a}-1} A[\tau_{1}, \, \tau_{2}] \times B{[i-\tau_{1}, \, j-\tau_{2}}]. \label{discretabi} \\  \nonumber
-\end{align}
-
