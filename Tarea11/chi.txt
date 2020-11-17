@@ -1,0 +1,4 @@
+        Chi-squared test for given probabilities
+
+data:  tabla
+X-squared = 17.56, df = 9, p-value = 0.04064
