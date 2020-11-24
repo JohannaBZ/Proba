@@ -1,0 +1,398 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\setlength{\parindent}{10mm}
+\setlength{\parskip}{0.9em}
+\def\baselinestretch{1.5}
+
+\usepackage[spanish,mexico]{babel}
+\renewcommand {\spanishtablename}{Cuadro}
+\usepackage[spanish,onelanguage,ruled]{algorithm2e}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{amsmath}
+\usepackage{amsthm, amsfonts}
+\usepackage{enumerate} 
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage[usenames]{color}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{fancyvrb}
+\usepackage{color,soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+ \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{multirow}
+
+
+
+\usepackage{verbatim}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+ {fontsize=\footnotesize,
+  %
+  frame=lines,  % top and bottom rule only
+  framesep=1em, % separation between frame and text
+  rulecolor=\color{Gray},
+  %
+  label=\fbox{\color{Black}test.txt},
+  labelposition=topline,
+  %
+  %commandchars=\ \mid \(\), % escape character and argument delimiters for
+                  % commands within the verbatim
+  %commentchar=*        % comment character
+ }
+
+
+\pagestyle{fancy}
+
+\chead{}
+\lhead{} 
+\rhead{}
+\lfoot{\it }
+\cfoot{}
+\rfoot{\thepage}
+
+\title{
+\centering
+Modelos Probabilistas Aplicados \\
+Johanna Bolaños Zúñiga \\
+Matricula: 1883900\\
+Tarea 12
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Poblemas a resolver}
+
+En el presente trabajo se realizaron las soluciones de diversos problemas del libro de Grinstead \cite{librop} sobre las funciones generadoras de momentos de una variable aleatoria (v.a), así como el valor esperado y varianza. Para el cálculo de estos valores se utilizaron las ecuaciones \ref{continua}, \ref{Vcontinua}, \ref{varianza}, donde $X$ es una v.a con distribución de probabilidad $f{(x)}$:
+
+\noindent Función generadora de momentos sí $X$ es continua,
+\begin{equation}
+g{(t)} = E{(e^{xt})} = \int_{-\infty}^{\infty}e^{xt}f(x)\,dx.
+\label{continua}
+\end{equation}
+\noindent Valor esperado si $X$ es continua,
+\begin{equation}
+\mu = E{(X)} = \int_{-\infty}^{\infty}xf(x)dx.
+\label{Vcontinua}
+\end{equation}
+\noindent Varianza de $X$,
+\begin{equation}
+\sigma^2 = V(X)= E{(X^2)} - \mu^2
+\label{varianza}
+\end{equation}
+
+\subsection{Problema 1, página 392}
+\noindent \textit{Let $Z_{1}$, $Z_{2}$, $\dots$, $Z_{N}$ describe a branching process in which each parent has $j$ offspring with probability $p_{j}$. Find the probability $d$ that the process eventually dies out if:}
+
+\begin{enumerate}[a)]
+    \item $p_{0}$ = $1/2$, $p_{1}$ = $1/4$, $p_{2}$ = $1/4$
+    \item $p_{0}$ = $1/3$, $p_{1}$ = $1/3$, $p_{2}$ = $1/3$
+    \item $p_{0}$ = $1/3$, $p_{1}$ = $0$, $p_{2}$ = $2/3$
+    \item $p_{j}$ = $1/2^{j+1}$
+    \item $p_{j}$ = $(1/3)(2/3)^j$
+\end{enumerate}  
+%el número esperado de descendientes producidos por un solo padre
+De acuerdo con el teorema 10.2, se tiene que sí $m \leq 1$, entonces $d=1$ y el proceso acaba con probabilidad $1$; sí $m > 1$, entonces $d < 1$ y el proceso acaba con probabilidad $d$. Para el cálculo del valor de $m$ se utiliza las siguientes expresiones:
+\begin{align}
+    \nonumber
+    m & = p_{1}+2p_{2} = 1-p_{0}-p_{2}+2p_{2} = 1-p_{0}+p_{2} \\ \nonumber
+    h(z) & = p_{0} + p_{1}z + p_{2}z^2 + \dots \\ \nonumber
+    m & = h'(1). \nonumber
+\end{align}
+
+\noindent \textbf{Inciso a)}
+\begin{align}
+    \nonumber
+        m & = \frac{1}{4} + 2\left(\frac{1}{4}\right) \\ \nonumber
+        m & = \frac{3}{4}. \nonumber
+\end{align}
+Como $m \leq 1$ y $p_{0} > p_{2}$, entonces $d=1$ y el proceso acaba con una probabilidad de $1$.
+
+\noindent \textbf{Inciso b)}
+\begin{align}
+    \nonumber
+        m & = \frac{1}{3} + 2\left(\frac{1}{3}\right) \\ \nonumber
+        m & = 1. \nonumber
+\end{align}
+Como $m \leq 1$ y $p_{0} = p_{2}$, entonces $d=1$ y el proceso acaba con una probabilidad de $1$.
+
+\noindent \textbf{Inciso c)}
+\begin{align}
+    \nonumber
+        m & = 0 + 2\left(\frac{2}{3}\right) \\ \nonumber
+        m & = \frac{4}{3}. \nonumber
+\end{align}
+Como $m > 1$ y $p_{0} < p_{2}$, entonces $d<1$ y el proceso acaba con una probabilidad de $d$. Para el cálculo del valor de $d$, se utliza la ecuación \ref{valord}:
+\begin{align} \label{valord}
+        d & = \frac{p_{0}}{p_{2}}\\ \nonumber
+        d & = \frac{\frac{1}{3}}{\frac{2}{3}}\\ \nonumber
+        d & = \frac{1}{2} \\ \nonumber
+\end{align}
+
+\noindent \textbf{Inciso d)}
+\begin{align}
+    \nonumber
+        h(z)        & = \frac{1}{2^{0+1}} + \frac{1}{2^{1+1}}z + \frac{1}{2^{2+1}}z^2 + \dots \\ \nonumber
+                    & = \frac{1}{2^{1}} + \frac{1}{2^{2}}z + \frac{1}{2^{3}}z^2 + \dots \\ \nonumber
+                    & = \frac{1}{2} \left(1 + \frac{1}{2^{1}}z + \frac{1}{2^{2}}z^2 + \dots \right)\\ \nonumber
+                    & = \frac{1}{2} \left(\frac{1}{1-\frac{1}{2}z} \right)\\ \nonumber
+                    & = \frac{1}{2-z} \\ \nonumber
+        h'(z)       & = -\frac{\frac{d}{dz}(2-z)}{(2-z)^2} \\ \nonumber
+                    & =-\frac{0-1}{(2-z)^2} \\ \nonumber
+                    & =\frac{1}{(2-z)^2} \\ \nonumber
+        m = h'(1)   & = \frac{1}{(2-1)^2}  \\ \nonumber
+                    & = 1 \nonumber
+\end{align}
+Como $m \leq 1$, entonces $d=1$ y el proceso acaba con una probabilidad de $1$.
+
+\noindent \textbf{Inciso e)}
+\begin{align}
+    \nonumber
+        h(z)        & = \left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^0 + \left(\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^1\right)z + \left(\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^2\right)z^2 + \dots \\ \nonumber
+                    & = \left(\frac{1}{3}\right) + \left(\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^1\right)z + \left(\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^2\right)z^2 + \dots \\ \nonumber
+                    & = \frac{1}{3} \left(1 + \left(\frac{2}{3}\right)^1z + \left(\frac{2}{3}\right)^2z^2 + \dots \right)\\ \nonumber
+                    & = \frac{1}{3} \left(\frac{1}{1-\frac{2}{3}z} \right)\\ \nonumber
+                    & = \frac{1}{3-2z} \\ \nonumber
+        h'(z)       & = -\frac{\frac{d}{dz}(2-z)}{(2-z)^2} \\ \nonumber
+                     & = -\frac{\frac{d}{dz}(3-2z)}{(3-2z)^2} \\ \nonumber
+                    & =-\frac{0-2}{(3-2z)^2} \\ \nonumber
+                    & =\frac{2}{(3-2z)^2} \\ \nonumber
+        m = h'(1)   & = \frac{2}{(3-2)^2}  \\ \nonumber
+                    & = 2 \nonumber
+\end{align}
+Como $m > 1$, entonces $d<1$ y el proceso acaba con una probabilidad de $d$. Para el cálculo del valor de $d$, se utliza la ecuación \ref{valord1}:
+\begin{align} \label{valord1}
+        z & = h{(z)}\\ \nonumber
+          & = \frac{1}{3-2z} \\ \nonumber
+        z({3-2z}) & = 1\\ 
+        2z^2-3z+1 & = 0  \nonumber 
+\end{align}
+Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 1/2 = d$.
+
+\subsection{Problema 3, página 401}
+\noindent \textit{In the chain letter problem (see Example 10.14) find your expected profit if:}
+
+\begin{enumerate}[a)]
+    \item $p_{0}$ = $1/2$, $p_{1}$ = $0$, $p_{2}$ = $1/2$
+    \item $p_{0}$ = $1/2$, $p_{1}$ = $0$, $p_{2}$ = $1/2$ 
+\end{enumerate}
+\noindent Show that if $p_{0} > 1/2$, you cannot expect to make a profit.
+
+\noindent \textbf{Solución}
+
+\noindent En este problema se tiene que el número esperado de cartas que se pueden vender es $m$=$p_{1}+2p_{2}$ y el valor esperado de la ganancia es $\text{E}_{(\text{ganancia})}$= $50(m+m^12)-100$, entonces se tiene que:
+
+\noindent \textbf{Caso a)}
+    \begin{align}
+    \nonumber
+        m & = 0 + 2\left(\frac{1}{2}\right) \\ \nonumber
+        m & = 1. \\ \nonumber
+        \text{E}_{(\text{ganancia})} & = 50(1+1^{12})-100 \\ \nonumber
+         \text{E}_{(\text{ganancia})} & = 0. \\ \nonumber
+    \end{align}
+\noindent \textbf{Caso b)} 
+    \begin{align}
+    \nonumber
+        m & = \frac{1}{2}+ 2\left(\frac{1}{3}\right)\\ \nonumber
+        m & = \frac{7}{6}. \\ \nonumber
+        \text{E}_{(\text{ganancia})} & = 50 \left(\frac{7}{6}+\left(\frac{7}{6} \right)^{12} \right)-100 \\ \nonumber
+         \text{E}_{(\text{ganancia})} & \thickapprox 276.26. \\ \nonumber
+    \end{align}  
+
+\noindent \textbf{Demostración)} 
+
+\noindent Se considera que $p_{0} + p_{1} + p_{2}$ = $1$, entonces se contempla un $p_{0}$ = $0.55$, $p_{1}$ = $0.25$ y $p_{2}$ = $0.2$, y se obtiene lo siguiente:
+
+\begin{align}
+\nonumber
+    m & = 0.25 + 2(0.2) \\ \nonumber
+    m & = 0.65 \\ \nonumber
+    \text{E}_{(\text{ganancia})} & = 50(0.65+0.65^{12})-100 \\ \nonumber
+    \text{E}_{(\text{ganancia})} & \thickapprox -67.22. \\ \nonumber
+\end{align}
+
+\subsection{Problema 1, página 401}
+\noindent \textit{Let $X$ be a continuous random variable with values in \text{[$0,2$]} and density $f_{X}$. Find the moment generating function $g{(t)}$ for $X$ if:}
+
+\begin{enumerate}[a)]
+    \item $f_{X}{(x)}$ = $1/2$
+    \begin{align} \label{parte1}
+        \nonumber
+        g{(t)}  & =  \int_{0}^{2}e^{xt}\frac{1}{2}\,dx \longrightarrow  \text{(ecuación \ref{continua})} \\ \nonumber
+                & = \frac{1}{2}\int_{0}^{2}e^{xt}\,dx \\ \nonumber
+                & = \frac{1}{2} \left[\left \frac{e^{xt}}{t} \right |_{0}^{2} \right] \\ \nonumber
+                & = \frac{1}{2} \left[\frac{e^{2t}}{t} - \frac{e^{0t}}{t} \right] \\ 
+                & = \frac{1}{2} \left[\frac{e^{2t}-1}{t} \right] \\ \nonumber
+                & = \frac{e^{2t}-1}{2t}. \\ \nonumber
+    \end{align}
+    \item $f_{X}{(x)}$ = $(1/2)x$
+    \begin{align} \label{parte2}
+        \nonumber
+        g{(t)}  & =  \int_{0}^{2}e^{xt}\frac{1}{2}x\,dx \longrightarrow  \text{(ecuación \ref{continua})} \\ \nonumber
+                & = \frac{1}{2}\int_{0}^{2}e^{xt}x\,dx  \Longrightarrow UV - \int_{0}^{2} V \, dU, \hspace{2mm} U=x, \hspace{2mm} dU=dx, \hspace{2mm} V= \frac{e^{xt}}{t} \\ \nonumber
+                & = \frac{1}{2} \left[ x \frac{e^{xt}}{t} - \int_{0}^{2}\frac{e^{xt}}{t}\,dx \right] \\ \nonumber
+                & = \frac{1}{2} \left[ x \frac{e^{xt}}{t} - \frac{1}{t} \int_{0}^{2}e^{xt}\,dx \right] \\ 
+                & = \frac{1}{2} \left[  x \left \frac{e^{xt}}{t} -  \frac{e^{xt}}{t^2} \right |_{0}^{2} \right] \\ \nonumber \label{parte2a}
+                & = \frac{1}{2} \left[2\frac{e^{2t}}{t} -  \frac{e^{2t}}{t^2} - \left(0\frac{e^{0t}}{t} -  \frac{e^{0t}}{t^2} \right) \right] \\ \nonumber
+                & = \frac{1}{2} \left[\frac{2e^{2t}}{t} -  \frac{e^{2t}}{t^2} + \frac{1}{t^2} \right] \\ \nonumber
+                & = \frac{1}{2} \left[\frac{2te^{2t}-e^{2t}+1}{t^2} \right] \\ 
+                & = \frac{e^{2t}(2t-1)+1}{2t^2}. \\ \nonumber
+    \end{align}    
+    \item $f_{X}{(x)}$ = $1-(1/2)x$
+    \begin{align}
+        \nonumber
+        g{(t)}  & =  \int_{0}^{2}e^{xt}\left[1-\frac{1}{2}x\right]\,dx \longrightarrow \text{(ecuación \ref{continua})} \\ \nonumber
+                & =  \int_{0}^{2}e^{xt}-\frac{e^{xt}}{2}x \,dx  \\ \nonumber
+                & =  \int_{0}^{2}e^{xt} \,dx  - \int_{0}^{2} \frac{e^{xt}}{2}x \,dx  \\ \nonumber
+                & =  \int_{0}^{2}e^{xt} \,dx  - \frac{1}{2}\int_{0}^{2} e^{xt}x \,dx  \\ \nonumber
+                 & = \color{red}\frac{e^{2t}-1}{t} \color{black} - \color{blue} \frac{e^{2t}(2t-1)+1}{2t^2} \color{black} \longrightarrow (\color{red} \text{ecuación \ref{parte1}} \color{black} \text{ y } \color{blue} \text{ecuación \ref{parte2a}} \color{black} ) \\ \nonumber
+                 & = \frac{2e^{2t}-2t-2e^{2t}+e^{2t}-1}{2t^2} \\ \nonumber
+                 & = \frac{e^{2t}-2t-1}{2t^2}. \\ \nonumber
+    \end{align}
+    \item $f_{X}{(x)}$ = $|1-x|$
+    \begin{align}
+        \nonumber
+        g{(t)}  & =  \int_{0}^{2}e^{xt}(|1-x|)\,dx \longrightarrow  \text{(ecuación \ref{continua})} \\ \nonumber
+                & =  \int_{0}^{1}e^{xt}(|1-x|)\,dx + \int_{1}^{2}e^{xt}(|x-1|)\,dx \,dx  \\ \nonumber
+                & =  \int_{0}^{1}e^{xt}-e^{xt}x\,dx + \int_{1}^{2}e^{xt}x-e^{xt}\,dx  \\ \nonumber 
+                & = \left[\int_{0}^{1}e^{xt}-\int_{0}^{1}e^{xt}x\,dx \right] + \left[\int_{1}^{2}e^{xt}x-\int_{1}^{2}e^{xt}\,dx \right]  \\ \nonumber
+                & = \left[\left[\left \color{red} \frac{e^{xt}}{t}\color{black} - \left(\color{violet} \frac{xe^{xt}}{t} - \frac{e^{xt}}{t^2} \color{black} \right) \right] \right |_{0}^{1} \right]  + \left[ \left[\left \color{violet} \frac{xe^{xt}}{t} - \frac{e^{xt}}{t^2} \color{black} - \color{red} \frac{e^{xt}}{t} \color{black} \right] \right |_{1}^{2} \right] \longrightarrow (\color{red} \text{ecuación \ref{parte1}} \color{black} \text{ y } \color{violet} \text{ecuación \ref{parte2}} \color{black})\\ \nonumber 
+                & = \left[\left[\left  \frac{e^{xt}}{t} -  \frac{xe^{xt}}{t} + \frac{e^{xt}}{t^2} \right] \right |_{0}^{1} \right]  +  \left[\left[\left \frac{xe^{xt}}{t} - \frac{e^{xt}}{t^2} - \frac{e^{xt}}{t} \right] \right |_{1}^{2}\right] \\ \nonumber
+                & = \left[\left[\left  \frac{e^{xt}-xe^{xt}}{t} + \frac{e^{xt}}{t^2} \right] \right |_{0}^{1} \right]  +  \left[\left[\left \frac{xe^{xt}}{t} - \frac{e^{xt}}{t^2} - \frac{e^{xt}}{t} \right] \right |_{1}^{2}\right] \\ \nonumber
+                & = \left[\frac{e^{1t}-1e^{1t}}{t} + \frac{e^{1t}}{t^2} - \left(\frac{e^{0t}-0e^{0t}}{t} + \frac{e^{0t}}{t^2} \right) \right] + \left[\frac{2e^{2t}}{t} - \frac{e^{2t}}{t^2} - \frac{e^{2t}}{t} - \left(\frac{1e^{1t}}{t} - \frac{e^{1t}}{t^2} - \frac{e^{1t}}{t}  \right)\right] \\ \nonumber
+                & = \left[\frac{e^{t}}{t^2} - \frac{1}{t} - \frac{1}{t^2} \right] + \left[\frac{e^{2t}}{t} - \frac{e^{2t}}{t^2} + \frac{e^{t}}{t^2} \right] \\ \nonumber
+                & = \left[\frac{e^{t}-t-1}{t^2} \right] + \left[\frac{te^{2t}-e^{2t}+e^{t}}{t^2} \right] \\ \nonumber
+                & = \frac{te^{2t}-e^{2t}+2e^{t}-t-1}{t^2} \\ \nonumber
+                & = \frac{e^{2t}(t-1)+2e^{t}-t-1}{t^2}. \\ \nonumber
+    \end{align}
+    \item $f_{X}{(x)}$ = $(3/8)x^2$
+    \begin{align}
+        \nonumber
+        g{(t)}  & =  \int_{0}^{2}e^{xt}\frac{3}{8}x^2\,dx \longrightarrow  \text{(ecuación \ref{continua})} \\ \nonumber
+                & =  \int_{0}^{2}\frac{3x^2e^{xt}}{8}\,dx \\ \nonumber
+                & =  \frac{3}{8} \int_{0}^{2}x^2e^{xt}\,dx \Longrightarrow UV - \int_{0}^{2} V \, dU, \hspace{2mm} U=x^2, \hspace{2mm} dU=2x\,dx, \hspace{2mm} V= \frac{e^{xt}}{t} \\ \nonumber
+                & =  \frac{3}{8} \left[x^2\frac{e^{xt}}{t}-\int_{0}^{2}\frac{e^{xt}}{t}2x\,dx \right] \\ \nonumber
+                & = \left[x^2\frac{e^{xt}}{t}-\frac{2}{t}\int_{0}^{2}e^{xt}x\,dx \right] \\ \nonumber
+                & =  \frac{3}{8} \left[ \left \left[ x^2  \frac{e^{xt}}{t}-\frac{2}{t} \left( x \left \frac{e^{xt}}{t} -  \frac{e^{xt}}{t^2} \right)  \right] \right |_{0}^{2} \right]\\ \nonumber
+                & =  \frac{3}{8} \left[ \left \left[ x^2  \frac{e^{xt}}{t}-\frac{2}{t} \left( \color{violet} x \left \frac{e^{xt}}{t} -  \frac{e^{xt}}{t^2} \color{black} \right) \color{black} \right] \right |_{0}^{2} \right] \longrightarrow (\color{violet}\text{ecuación \ref{parte2}} \color{black}) \\ \nonumber
+                & =  \frac{3}{8} \left[ \left \left[\frac{x^2e^{xt}}{t}-\frac{2}{t} \left(\left \frac{txe^{xt}-e^{xt}}{t^2} \right) \right] \right |_{0}^{2} \right] \\ \nonumber
+                & =  \frac{3}{8} \left[ \left \left[\frac{x^2e^{xt}}{t} - \left \frac{2txe^{xt}+2e^{xt}}{t^3} \right] \right |_{0}^{2} \right] \\ \nonumber
+                & =  \frac{3}{8} \left[ \left \left[ \left \frac{t^2x^2e^{xt} - 2txe^{xt}+2e^{xt}}{t^3} \right] \right |_{0}^{2} \right] \\ \nonumber
+                & =  \frac{3}{8} \left[ \frac{t^2(2)^2e^{2t} - 2t(2)e^{2t}+2e^{2t}}{t^3} - \left( \frac{t^2(0)^2e^{0t} - 2t(0)e^{0t}+2e^{0t}}{t^3} \right) \right] \\ \nonumber
+                & =  \frac{3}{8} \left[ \frac{4t^2e^{2t} - 4te^{2t}+2e^{2t}-2}{t^3}  \right] \\ \nonumber
+                & =  \frac{12t^2e^{2t} - 12te^{2t} + 6e^{2t} - 6}{8t^3} \\\nonumber
+                & =  \frac{6t^2e^{2t} - 6te^{2t} + 3e^{2t} - 3}{4t^3}. \\ \nonumber
+                & =  \frac{3}{4} \left[\frac{e^{2t}(2t^2 - 2t + 1)-1}{t^3}\right]. \\ \nonumber
+    \end{align}
+\end{enumerate}
+
+\subsection{Problema 6, página 402}
+\noindent \textit{Let $X$ be a continuous random variable whose characteristic function $k-{X}(\tau)$ is:}
+\begin{align} \label{valork}
+        k_{X}(\tau) & = e^{-|\tau|} \quad -\infty < \tau <  \infty.
+\end{align}
+
+\noindent Show directly that the density $f_{X}$ of $X$ is
+\begin{align} \label{densidad}
+        f_{X}{(x)} & = \frac{1}{\pi(1+x^2)}. 
+\end{align}
+
+\noindent \textbf{Solución} 
+
+\noindent Se tiene que la función de densidad $f_{X}(x)$ es:
+\begin{align}
+\nonumber
+    f_{X}{(x)}  & = \frac{1}{2\pi} \int_{-\infty}^{\infty}e^{-ix\tau}k_{X}(\tau)\,d\tau \\ \nonumber
+                & = \frac{1}{2\pi} \int_{-\infty}^{\infty}e^{-ix\tau} \color{red} e^{-|\tau|}\, \color{black}d\tau \longrightarrow (\color{red}\text{ecuación \ref{valork}}\color{black}) \\ \nonumber
+                & = \frac{1}{2\pi} \left[\int_{-\infty}^{0}e^{-ix\tau} e^{-(-\tau)}\, d\tau + \int_{0}^{\infty}e^{-ix\tau} e^{-\tau}\, d\tau \right] \\ \nonumber
+                & = \frac{1}{2\pi} \left[\int_{-\infty}^{0}e^{-ix\tau+\tau} \, d\tau + \int_{0}^{\infty}e^{-ix\tau-\tau} \, d\tau \right] \\ \nonumber
+                & = \frac{1}{2\pi} \left[\int_{-\infty}^{0}e^{\tau(1-ix)} \, d\tau + \int_{0}^{\infty}e^{-\tau(ix+1)} \, d\tau \right] \\ \nonumber
+                & = \frac{1}{2\pi} \left[\left[\left \frac{e^{\tau(1-ix)}}{(1-ix)} \right] \right|_{-\infty}^{0}  + \left[ - \left \frac{e^{-\tau(ix+1)}}{(ix+1)} \right] \right|_{0}^{\infty} \right] \\ \nonumber
+                & = \frac{1}{2\pi} \left[\left[ \frac{e^{0(1-ix)}}{(1-ix)} - \frac{e^{-\infty(1-ix)}}{(1-ix)}\right] - \left[\frac{e^{-\infty(ix+1)}}{(ix+1)} - \frac{e^{-0(ix+1)}}{(ix+1)} \right]  \right] \\ \nonumber
+                & = \frac{1}{2\pi} \left[ \frac{1}{(1-ix)} + \frac{1}{(ix+1)} \right]  \\ \nonumber
+                & = \frac{1}{2\pi} \left[ \frac{ix+1+1-ix}{(ix+1-(ix)^2 -ix)} \right]  \\ \nonumber
+                & = \frac{1}{2\pi} \left[ \frac{2}{(1-(ix)^2)} \right]  \\ \nonumber
+                & = \frac{1}{\pi} \left[ \frac{1}{(1-(\color{blue}-\color{black}x^2)} \right] \longrightarrow (\color{blue}i=\sqrt{-1}\color{black}, \, \text{(teorema 10.4)})  \\ \nonumber
+                & = \frac{1}{\pi(1+x^2)} \longrightarrow \text{(ecuación \ref{densidad})}. \\ \nonumber
+\end{align}
+
+\subsection{Problema 10, página 403}
+\noindent \textit{Let $X_{1}, \, X_{2}, \, \dots, \, X_{n}, \,$ be an independent trials process with density}
+\begin{align} 
+\nonumber
+        f{(x)} & = \frac{1}{2}e^{-|x|} \quad -\infty < x <  \infty.
+\end{align}
+
+\begin{enumerate}[a)]
+    \item \textit{Find the mean and variance of $f(x)$}
+    \begin{align}
+    \nonumber
+        \mu = E{(X)} & =  \int_{-\infty}^{\infty} x \frac{1}{2}e^{-|x|} \, dx \longrightarrow (\text{ecuación \ref{Vcontinua}}) \\ \nonumber
+                    & = \frac{1}{2} \left[\int_{-\infty}^{0} x e^{-(-x)} \, dx + \int_{0}^{\infty}x e^{-(x)} \, dx \right] \\ \nonumber
+                    & = \frac{1}{2} \left[\int_{-\infty}^{0} x e^{(x)} \, dx + \int_{0}^{\infty}x e^{-(x)} \, dx \right] \\ \nonumber
+                    & = \frac{1}{2} \left[-1 + 1 \right] \\ \nonumber
+                    & = 0. \nonumber
+    \end{align}
+Ahora, para calcular la varianza, se necesita el valor de $E(X^2)$, entonces:
+    \begin{align}
+    \nonumber
+        \mu = E{(X)} & =  \int_{-\infty}^{\infty} x^2 \frac{1}{2}e^{-|x|} \, dx \longrightarrow (\text{ecuación \ref{Vcontinua}}) \\ \nonumber
+                    & = \frac{1}{2} \left[\int_{-\infty}^{0} x^2 e^{-(-x)} \, dx + \int_{0}^{\infty} x^2 e^{-(x)} \, dx \right] \\ \nonumber
+                    & = \frac{1}{2} \left[\int_{-\infty}^{0} x^2 e^{(x)} \, dx + \int_{0}^{\infty} x^2 e^{-(x)} \, dx \right] \\ \nonumber
+                    & = \frac{1}{2} \left[2+2 \right] \\ \nonumber
+                    & = 2. \nonumber
+    \end{align}
+Por lo tanto, para calcular la varianza se utiliza la ecuación \ref{varianza}:
+    \begin{align}
+        \nonumber
+        V{(X)}  & = 2 - (0)^2 \\ \nonumber
+                & = 2 - 0 \\ \nonumber
+                & = 2. \nonumber
+    \end{align}
+    
+    \item \textit{Find the moment generating function for $X_{1}$, $S_{n}$, $A_{n}$, and $S_{n}^{*}$}
+    \begin{align}
+        \nonumber
+        g{(t)}  & =  \int_{-\infty}^{\infty}e^{xt}\left[\frac{e^{-|x|}}{2}\right]\,dx \longrightarrow \text{(ecuación \ref{continua})} \\ \nonumber
+                & = \frac{1}{2} \int_{-\infty}^{\infty}e^{xt} e^{-|x|} \,dx \\ \nonumber
+                & = \frac{1}{2} \left[\int_{-\infty}^{0}e^{xt} e^{-(-x)} \,dx + \int_{0}^{\infty} e^{xt} e^{-(x)} \,dx\right] \\ \nonumber
+                & = \frac{1}{2} \left[\int_{-\infty}^{0}e^{xt+x} \,dx + \int_{0}^{\infty} e^{xt-x} \,dx \right] \\ \nonumber
+                & = \frac{1}{2} \left[\int_{-\infty}^{0}e^{x(t+1)} + \int_{0}^{\infty} e^{-x(-t+1)} \right] \\ \nonumber
+                & = \frac{1}{2} \left[\left[\left \frac{e^{x(t+1)}}{(t+1)} \right] \right|_{-\infty}^{0}  + \left[ - \left \frac{e^{-x(1-t)}}{(1-t)} \right] \right|_{0}^{\infty} \right] \\ \nonumber
+                & = \frac{1}{2} \left[\left[ \frac{e^{0(t+1)}}{(t+1)} - \frac{e^{-\infty(t+1)}}{t+1}\right] - \left[\frac{e^{-\infty(1-t)}}{(1-t)} - \frac{e^{-0(1-t)}}{(1-t)} \right]  \right] \\ \nonumber
+                & = \frac{1}{2} \left[ \frac{1}{(t+1)} + \frac{1}{(1-t)} \right]  \\ \nonumber
+                & = \frac{1}{2} \left[ \frac{1-t+t+1}{(t-t^2+1-t)} \right]  \\ \nonumber
+                & = \frac{1}{2} \left[ \frac{2}{(1-t^2)} \right]  \\ \nonumber
+                & = \frac{1}{(1-t^2)}. \\ \nonumber
+    \end{align}
+    \begin{align}
+        \nonumber
+        S_{n}  & = (g{(t)})^n \\ \nonumber
+                & = \left(\frac{1}{(1-t^2)} \right)^n \\ \nonumber
+                & = \frac{1}{(1-t^2)^n}. \\ \nonumber
+    \end{align}
+        \begin{align}
+        \nonumber
+        S_{n}^*  & = \left(g{\left(\frac{t}{\sqrt{n}}\right)}\right)^n \\ \nonumber
+                & = \left(\frac{1}{\left(1-\left(\frac{t}{\sqrt{n}}\right)^2\right)} \right)^n \\ \nonumber
+                & = \frac{1}{\left(1-\left(\frac{t}{\sqrt{n}}\right)^2\right)^n}.  \\ \nonumber
+    \end{align}
+\end{enumerate}
+
+
+
+\bibliography{refProbabilidad}
+\bibliographystyle{plain}
+
+\end{document}
