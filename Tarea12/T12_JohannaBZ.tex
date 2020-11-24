@@ -101,8 +101,9 @@ g{(t)} = E{(e^{xt})} = \int_{-\infty}^{\infty}e^{xt}f(x)\,dx.
     \item $p_{0}$ = $1/3$, $p_{1}$ = $0$, $p_{2}$ = $2/3$
     \item $p_{j}$ = $1/2^{j+1}$
     \item $p_{j}$ = $(1/3)(2/3)^j$
+    \item $p_{j}$ = $\frac{e^{-2}2^j}{j!}$
 \end{enumerate}  
-%el número esperado de descendientes producidos por un solo padre
+
 De acuerdo con el teorema 10.2, se tiene que sí $m \leq 1$, entonces $d=1$ y el proceso acaba con probabilidad $1$; sí $m > 1$, entonces $d < 1$ y el proceso acaba con probabilidad $d$. Para el cálculo del valor de $m$ se utiliza las siguientes expresiones:
 \begin{align}
     \nonumber
@@ -180,6 +181,10 @@ Como $m > 1$, entonces $d<1$ y el proceso acaba con una probabilidad de $d$. Par
 \end{align}
 Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 1/2 = d$.
 
+\noindent \textbf{Inciso f)}
+
+Considerando que $d=h{(d)=p_{0} + p_{1}d + p_{2}d^2+\dots}$, se utiliza esta expresión para estimar el valor de $d$ númericamente en el programa R, lo cual da como resultado $d \thickapprox 0.2032$. El código empleado se encuentra en el repositorio GitHub \cite{github}.
+
 \subsection{Problema 3, página 401}
 \noindent \textit{In the chain letter problem (see Example 10.14) find your expected profit if:}
 
@@ -193,7 +198,7 @@ Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 
 
 \noindent En este problema se tiene que el número esperado de cartas que se pueden vender es $m$=$p_{1}+2p_{2}$ y el valor esperado de la ganancia es $\text{E}_{(\text{ganancia})}$= $50(m+m^12)-100$, entonces se tiene que:
 
-\noindent \textbf{Caso a)}
+\noindent \textbf{Inciso a)}
     \begin{align}
     \nonumber
         m & = 0 + 2\left(\frac{1}{2}\right) \\ \nonumber
@@ -201,7 +206,7 @@ Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 
         \text{E}_{(\text{ganancia})} & = 50(1+1^{12})-100 \\ \nonumber
          \text{E}_{(\text{ganancia})} & = 0. \\ \nonumber
     \end{align}
-\noindent \textbf{Caso b)} 
+\noindent \textbf{Inciso b)} 
     \begin{align}
     \nonumber
         m & = \frac{1}{2}+ 2\left(\frac{1}{3}\right)\\ \nonumber
@@ -210,10 +215,9 @@ Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 
          \text{E}_{(\text{ganancia})} & \thickapprox 276.26. \\ \nonumber
     \end{align}  
 
-\noindent \textbf{Demostración)} 
+\noindent \textbf{Demostración} 
 
 \noindent Se considera que $p_{0} + p_{1} + p_{2}$ = $1$, entonces se contempla un $p_{0}$ = $0.55$, $p_{1}$ = $0.25$ y $p_{2}$ = $0.2$, y se obtiene lo siguiente:
-
 \begin{align}
 \nonumber
     m & = 0.25 + 2(0.2) \\ \nonumber
@@ -223,7 +227,7 @@ Por lo tanto, resolviendo la ecuación cuadrática queda que $z_1 = 1$ y $z_2 = 
 \end{align}
 
 \subsection{Problema 1, página 401}
-\noindent \textit{Let $X$ be a continuous random variable with values in \text{[$0,2$]} and density $f_{X}$. Find the moment generating function $g{(t)}$ for $X$ if:}
+\noindent \textit{Let $X$ be a continuous random variable with values in} [$0,2$] \textit{and density $f_{X}$. Find the moment generating function $g{(t)}$ for $X$ if:}
 
 \begin{enumerate}[a)]
     \item $f_{X}{(x)}$ = $1/2$
@@ -388,6 +392,12 @@ Por lo tanto, para calcular la varianza se utiliza la ecuación \ref{varianza}:
                 & = \left(\frac{1}{\left(1-\left(\frac{t}{\sqrt{n}}\right)^2\right)} \right)^n \\ \nonumber
                 & = \frac{1}{\left(1-\left(\frac{t}{\sqrt{n}}\right)^2\right)^n}.  \\ \nonumber
     \end{align}
+    \item \textit{What can you say about the moment generating function of $S_{n}^{*}$ as $n \longrightarrow \infty$?}
+        \begin{align}
+        \nonumber
+        \lim_{n \to \infty}\frac{1}{\left(1-\left(\frac{t}{\sqrt{n}}\right)^2\right)^n}\nonumber
+    \end{align}
+Por lo tanto, la función generadora de  $S_{n}^{*} \longrightarrow 1$.
 \end{enumerate}
 
 
