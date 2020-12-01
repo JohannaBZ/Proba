@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\setlength{\parindent}{10mm}
+\setlength{\parskip}{0.9em}
+\def\baselinestretch{1.5}
+
+\usepackage[spanish,mexico]{babel}
+\renewcommand {\spanishtablename}{Cuadro}
+\usepackage[spanish,onelanguage,ruled]{algorithm2e}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{amsmath}
+\usepackage{amsthm, amsfonts}
+\usepackage{enumerate} 
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage[usenames]{color}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{fancyvrb}
+\usepackage{color,soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+ \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{dirtytalk}
+
+
+
+\usepackage{verbatim}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+ {fontsize=\footnotesize,
+  %
+  frame=lines,  % top and bottom rule only
+  framesep=1em, % separation between frame and text
+  rulecolor=\color{Gray},
+  %
+  label=\fbox{\color{Black}test.txt},
+  labelposition=topline,
+  %
+  %commandchars=\ \mid \(\), % escape character and argument delimiters for
+                  % commands within the verbatim
+  %commentchar=*        % comment character
+ }
+
+
+\pagestyle{fancy}
+
+\chead{}
+\lhead{} 
+\rhead{}
+\lfoot{\it }
+\cfoot{}
+\rfoot{\thepage}
+
+\title{
+\centering
+Modelos Probabilistas Aplicados \\
+Johanna Bolaños Zúñiga \\
+Matricula: 1883900\\
+Tarea 13
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Aplicación de la ley de números grandes}
+
+La ley de los números grandes indica que, en especial, el promedio de un gran número de resultados refleja o se acerca al valor esperado (media analítica) y que la diferencia se reduce a medida que se introducen más resultados. Por ejemplo, en la prueba de Bernoulli con probabilidad de éxito $p$: con suficientes repeticiones, el porcentaje de éxitos obtenidos se acerca necesariamente a $p$ \cite{notasElisa}.
+
+Existen dos formas de la ley de los grandes números, \textbf{ley débil} y la \textbf{ley fuerte}, en referencia a dos modos diferentes de convergencia del promedio de la muestra acumulada, entonces sean $X_{1}, \, X_{2}, \, \dots , X_{n}$ un proceso de pruebas independientes e igualmente distribuidos (i.i.d) con un valor esperado finito $\mu = \text{E}[X]$ y una varianza finita $\sigma^2 = \text{E}[X]$ y sean $S_{n} = X_{1} + X_{2} + \dots + X_{n}$ y $\epsilon$ un valor real arbitrario positivo, \textbf{la ley débil} (también llamada ley de \textit{Khinchin}) establece que el promedio de la muestra converge hacia el valor esperado, es decir, que la probabilidad de que estos valores sean diferentes es cero y, la \textbf{ley fuerte} establece que el promedio de la muestra converge casi con seguridad al valor esperado, es decir, que la probabilidad de que estos valores sean iguales es uno  \cite{Loeve}. Lo anterior se expresa mediante las ecuaciones \ref{debil} y \ref{fuerte}, respectivamente:
+\begin{equation} 
+\lim_{n \to \infty}P\left(\left |\frac{S_{n}}{n}-\mu \right | \geq \epsilon \right) = 0 \quad \forall \epsilon >0,
+\label{debil}
+\end{equation}
+\begin{equation} 
+\lim_{n \to \infty}P\left(\left |\frac{S_{n}}{n}-\mu \right | < \epsilon \right) = 1 \quad \forall \epsilon >0.
+\label{fuerte}
+\end{equation}
+
+En la investigación desarrollada por Tinungki \cite{Tinungki}, utilizan la ley de los números en el campo de los seguros de vida. Aunque el seguro de vida es un negocio, solo lo es para aquellas empresas que pueden mantener su solidez financiera mientras pagan reclamaciones. Las compañías de seguros utilizan la ley de los grandes números para reducir su propio riesgo de pérdida al agrupar un número suficientemente grande de personas en un grupo asegurado.
+
+Cabe recordar que, en este negocio, los riesgos que enfrenta cada individuo son transferidos a la compañía de seguros, la cual se compromete a indemnizar el monto especificado en el contrato de la póliza. Para compensar esta pérdida, el asegurador fija la prima a pagar por el asegurado, por lo tanto, los errores en la medición de los factores que se involucran al establecer esta prima (el valor de cualquier pérdida, los costos administrativos, factores económicos, de salud y sociales, entre otros) pueden causar pérdidas a las compañías de seguros, en especial cuando se fija una prima menor de la que deberían. El seguro de vida, como herramienta para distribuir el riesgo, solo puede funcionar si una compañía puede asumir el mismo riesgo en grandes cantidades.
+
+De acuerdo a Tinungki \cite{Tinungki}, el utilizar la ley de los grandes números significa que el asegurador puede determinar la tasa de mortalidad y el nivel de morbilidad (el nivel de enfermedad, lesión y ocurrencia de fallas de salud) de la persona asegurada. El propósito del cálculo de estas tasas permite que la compañía de seguros pueda predecir el potencial de pérdidas y calcular la prima. A pesar de que los datos de pérdidas pueden complicarse con el tiempo, estas se pueden predecir con precisión. Por lo tanto, el costo de las pérdidas se puede distribuir uniformemente sobre el total de clientes de acuerdo con la clase garantizada por el seguro. Por ende, con base en la definición de la ley de los grandes números, cuando se obtiene una muestra aleatoria tomada desde una variable aleatoria independientes e igualmente distribuida, con media y varianza finita, entonces el promedio de la muestra estará cerca del promedio de la población. Es así como el uso de esta ley permite predecir mejor el número de pérdidas, ya que a mayor sea la población asegurada, más precisas serán las predicciones de las perdidas esperadas.
+
+Por ejemplo, en promedio de cada $100$ participantes del seguro, al menos uno de los participantes presentará una reclamación, entonces la prima de $100$ participantes debería poder proporcionar la suma asegurada de al menos una reclamación por accidente, por ende, a mayor número de participantes asegurados incluidos en el cálculo, habrá una mayor precisión de las perdidas esperadas y esto le permite a las aseguradoras fijar el precio de las pólizas de seguro con y cobro de la prima con precisión \cite{smith}.
+
+Se realizó una simulación como ejemplo numérico para demostrar lo anteriormente mencionado, es decir, a medida que aumenta la cantidad de personas aseguras (tiende a ser igual la población total) se puede proyectar con mejor exactitud la perdidas u ocurrencia del evento que se está asegurando. Para esta simulación, se considera que cada año hay una probabilidad de $1/250$ de que ocurra un siniestro $z$, por lo tanto, nuestra variable aleatoria, en este caso variables booleanas independientes, tendrán el valor de $1$ cuando ocurra el evento con probabilidad de $1/250$ (lo que representa una pérdida) y de $0$ en caso contrario ($1-1/250$), se calcula el promedio de la cantidad de ocurrencias del evento para $1,000$ repeticiones y se va variando el tamaño de la muestra $n$ (número de asegurados) desde $1,000$, $100,000$, $1,000,000$ y $10,000,000$ \cite{notasdeclaseinsurance}. El código empleado para esta simulación se realizó en el programa R versión 4.0.2 \cite{r} y se encuentra en el repositorio GitHub \cite{github}. Agradecimientos al compañero Alberto Benavidez por su colaboración en la implementación del código.
+
+\begin{figure}[h]
+    \begin{center}
+    \captionsetup{justification=centering}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[scale=0.55]{Figures/1000.png}
+        \caption{$n=1,000$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[scale=0.55]{Figures/100000.png}
+        \caption{$n=100,000$}
+    \end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[scale=0.55]{Figures/1000000.png}
+        \caption{$n=1,000,000$}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[scale=0.55]{Figures/10000000.png}
+        \caption{$n=10,000,000$}
+    \end{subfigure}
+    \caption{Resultados simulación de la ley de los grandes números en los seguros}
+    \label{resultados}
+    \end{center}
+\end{figure}
+
+En las figura \ref{resultados} se muestra el resultado de la simulación en la que podemos observar que a medida que aumenta el número de riesgos independientes (es decir, el tamaño de la muestra crece), las probabilidades del número de pérdidas tienden a la media esperada, por lo tanto más precisas serán las predicciones de las perdidas esperadas.
+
+
+\bibliography{refProbabilidad}
+\bibliographystyle{plain}
+
+\end{document}
+
+%la cual sirve para predecir el riesgo de pérdida o siniestros de algunos participantes para que la prima se pueda calcular adecuadamente. En este campo, esta ley establece que si aumenta la cantidad de exposición a pérdidas, entonces la pérdida predicha estará más cerca de la pérdida real. El uso de la ley de los grandes números permite predecir mejor el número de pérdidas, ya que a mayor sea la población, más precisas serán las predicciones. 
+
+
+%Las anteriores expresiones indican cuando se  convergen fuertemente (casi con seguridad) se garantiza converger débilmente (en probabilidad) \cite{Tinungki}. Sin embargo, de acuerdo a la literatura, la ley débil se cumple en ciertas condiciones donde la ley fuerte no se cumple y entonces la convergencia es solo débil (en probabilidad). %vemos entonces que la forma fuerte implica la débil.
