@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\setlength{\parindent}{10mm}
+\setlength{\parskip}{0.9em}
+\def\baselinestretch{1.5}
+
+\usepackage[spanish,mexico]{babel}
+\renewcommand {\spanishtablename}{Cuadro}
+\usepackage[spanish,onelanguage,ruled]{algorithm2e}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption} 
+\usepackage{amsmath}
+\usepackage{amsthm, amsfonts}
+\usepackage{enumerate} 
+\usepackage{fancyhdr}
+\usepackage{anysize} 
+\usepackage[usenames]{color}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{fancyvrb}
+\usepackage{color,soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+ \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{dirtytalk}
+
+
+
+\usepackage{verbatim}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+ {fontsize=\footnotesize,
+  %
+  frame=lines,  % top and bottom rule only
+  framesep=1em, % separation between frame and text
+  rulecolor=\color{Gray},
+  %
+  label=\fbox{\color{Black}test.txt},
+  labelposition=topline,
+  %
+  %commandchars=\ \mid \(\), % escape character and argument delimiters for
+                  % commands within the verbatim
+  %commentchar=*        % comment character
+ }
+
+
+\pagestyle{fancy}
+
+\chead{}
+\lhead{} 
+\rhead{}
+\lfoot{\it }
+\cfoot{}
+\rfoot{\thepage}
+
+\title{
+\centering
+Modelos Probabilistas Aplicados \\
+Johanna Bolaños Zúñiga \\
+Matricula: 1883900\\
+Tarea 15
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Propuestas para el proyecto final de la clase}
+
+Las siguientes propuestas son planteadas como ideas para realizar el producto integrador de la materia Modelos Probabilistas Aplicados, las cuales podrían ser modificadas para llevar a cabo un trabajo final que cumpla con los requisitos:
+
+\begin{enumerate}
+    \item En el tema de tesis, se cuenta con un modelo matemático y una metaheurística para encontrar la solución del problema planteado. Por medio de la prueba de hipótesis de medias de diferencia se pretende comprobar que existe un ahorro entre la metaheurística y la solución ofrecida por el modelo matemático en un $95\%$ y determinar que tanto mejora la solución considerando intervalos de confianza del $90\%$ y $95\%$. Estas pruebas se aplicarán tanto por tamaño de instancias (pequeñas, medianas tipo $1$, medianas tipo $2$ y grandes) como para el total de instancias. Además, se aplicaría la prueba de hipótesis para proporciones para determinar la proporción de mejores soluciones encontradas mediante el uso de la metaheurística.
+    \item Explicar el valor de PIB en Colombia en función de variables como la tasa de interés, inversiones, número de empleados y tasas de cambio, utilizando un modelo de regresión lineal múltiple con la técnica de Mínimos Cuadrados Ordinarios (MCO).
+    \item Mediante información de la Encuesta Nacional de Niños, Niñas y Mujeres (ENIM) 2015 en México, se construye la variable binaria que tomará el valor de 1 si el niño (entre 0 y 5 años) está desnutrido y cero, en caso contrario. La desnutrición es medida a través del indicador talla para la edad. Se utilizarán variables explicativas como la edad de la madre, número de hermanos, región de nacimiento y lactancia por parte de la madre, ingresos de la familia y, se utilizará un modelo de regresión Logit para tratar de explicar la probabilidad de si un niño es desnutrido o no.
+\end{enumerate}
+
+
+%\bibliography{refProbabilidad}
+%\bibliographystyle{plain}
+
+\end{document}
+
