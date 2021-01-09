@@ -1,0 +1,10 @@
+        1-sample proportions test without continuity correction
+
+data:  67 out of 77, null probability 0.6
+X-squared = 23.411, df = 1, p-value = 6.541e-07
+alternative hypothesis: true p is greater than 0.6
+95 percent confidence interval:
+ 0.7943705 1.0000000
+sample estimates:
+        p 
+0.8701299 

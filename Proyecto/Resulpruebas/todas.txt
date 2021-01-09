@@ -1,0 +1,10 @@
+        One Sample t-test
+
+data:  totalinstancias
+t = 8.7762, df = 184, p-value = 1.142e-15
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.1628593 0.2573175
+sample estimates:
+mean of x 
+0.2100884 

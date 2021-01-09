@@ -1,0 +1,10 @@
+        One Sample t-test
+
+data:  grandes
+t = 7.9439, df = 3, p-value = 0.00416
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.4058593 0.9483968
+sample estimates:
+mean of x 
+ 0.677128 

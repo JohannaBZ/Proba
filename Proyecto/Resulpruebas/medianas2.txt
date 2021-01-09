@@ -1,0 +1,10 @@
+        One Sample t-test
+
+data:  medianas2
+t = 19.774, df = 48, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.5579331 0.6842349
+sample estimates:
+mean of x 
+ 0.621084 
